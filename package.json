@@ -1,5 +1,5 @@
 {
-  "name": "authenticate-me",
+  "name": "every-note-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tinezh94/Authenticate-Me.git"
+    "url": "git+https://github.com/tinezh94/Every-Note.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tinezh94/Authenticate-Me/issues"
+    "url": "https://github.com/tinezh94/Every-Note/issues"
   },
-  "homepage": "https://github.com/tinezh94/Authenticate-Me#readme"
+  "homepage": "https://github.com/tinezh94/Every-Note#readme"
 }
