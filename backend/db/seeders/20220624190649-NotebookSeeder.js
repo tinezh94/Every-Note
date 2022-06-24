@@ -10,7 +10,8 @@ module.exports = {
       */
     //  return queryInterface.bulkInsert('Notebooks', [
     //   {
-    //    name: 'First Notebook'
+    //    name: 'First Notebook',
+
     //  }], {});
     },
 
