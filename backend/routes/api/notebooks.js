@@ -12,7 +12,9 @@ const router = express.Router();
 router.get('/user/:id', asyncHandler(async(req, res) => {
     const userId = req.params.id;
     const notebooks = await db.Notebook.findAll({
-        where: {userId: userId},
+        where: {
+            userId: userId
+        },
         include: [db.Note],
         order: ['id', 'DESC']
     });
@@ -56,8 +58,17 @@ router.put('/:id', asyncHandler(async (req, res) => {
 //Delete notebook
 router.delete('/:id', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
-    await db.NoteBook.destroy();
-    return res.json(notebookId);
+    const notbook = await db.Notebook.findByPk(notebookId);
+    const userId = notebook.userId;
+
+    await notebook.destroy();
+    const notebooks = await Notebook.findAll({
+        where: {
+            useId: userId,
+        }
+    });
+
+    return res.json(notebooks);
 }))
 
 module.exports = router;

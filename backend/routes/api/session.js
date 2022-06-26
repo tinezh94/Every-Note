@@ -59,12 +59,26 @@ router.post(
     })
 );
 
-  router.delete(
-    '/',
-    (_req, res) => {
-      res.clearCookie('token');
-      return res.json({ message: 'success' });
-    }
-  );
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
+
+//demo user
+router.post('/demo-user', asyncHandler(async (rq, res) => {
+  const { credential, password } = req.body;
+
+  const user = await User.login({ credential, password });
+
+  await setTokenCookie(res, user);
+
+  return res.json({
+    user
+  });
+
+}))
 
 module.exports = router;
