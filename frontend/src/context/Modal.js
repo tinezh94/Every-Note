@@ -30,7 +30,13 @@ export function Modal({ onClose, children }) {
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
       <div id="modal-content">
+        <div className='logo-image-div'>
+          <img id='logo-image' src='https://cdn-icons-png.flaticon.com/512/889/889669.png' alt='post-it' />
+        </div>
+        <h1 id='log-in-h1'> EveryNote </h1>
+        <div>
         {children}
+        </div>
       </div>
     </div>,
     modalNode

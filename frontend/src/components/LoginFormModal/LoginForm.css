@@ -1,3 +1,94 @@
-.input-label {
-    font-family: Arial, Helvetica, sans-serif;
+.home-login-div {
+    box-sizing: border-box;
+    line-height: 1em;
+    border: none;
+
+}
+
+.home-login-button {
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    text-align: center;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    background-color: white;
+    line-height: 1em;
+}
+
+.home-login-button:hover {
+    color: #00a82d;
+    cursor: pointer;
+}
+
+.login-form-label {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 10px;
+    margin: 10px 10px;
+}
+
+
+.login-form-input-div {
+    margin: 8px 5px;
+    display: inline-block
+}
+
+.login-form-input {
+    width: 250px;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+}
+
+.login-button-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.login-button {
+    width: 120px;
+    height: 30px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    background-color: #00a82d;
+    border: 1px solid #00a82d;
+    color: white;
+    border-radius: 7px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #027921;
+}
+
+/* .switch-to-signup-div {
+    display: flex;
+} */
+
+.no-account {
+    font-family: 'Segoe UI', 'Roboto', 'Cantarell', 'Droid Sans', sans-serif;
+    font-size: 14px;
+    color: #737373;
+    text-align: center;
+}
+
+.create-account {
+    font-family: 'Segoe UI', 'Roboto', 'Cantarell', 'Droid Sans', sans-serif;
+    font-size: 16px;
+    color: #00a82d;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 165px;
+}
+
+.create-account:hover {
+    color: #027921;
+    cursor: pointer;
 }
