@@ -15,14 +15,15 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(205, 125, 125, 0.7);
+    /* background-color: rgba(205, 125, 125, 0.7); */
+    /* opacity: 0.8; */
 }
 
 #modal-content {
     position: absolute;
     background-color: white;
     padding: 30px 99px 48px;
-    ;
+    border-radius: 5px;
 }
 
 .logo-image-div {
@@ -35,7 +36,6 @@
     height: 46px;
     padding-top: 10px;
     padding-bottom: 10px;
-
 }
 
 #log-in-h1 {

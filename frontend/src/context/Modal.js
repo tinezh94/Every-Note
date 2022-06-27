@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
+import background from './backgroundImage.png'
 
 const ModalContext = React.createContext();
 
@@ -28,7 +29,7 @@ export function Modal({ onClose, children }) {
 
   return ReactDOM.createPortal(
     <div id="modal">
-      <div id="modal-background" onClick={onClose} />
+      <div id="modal-background" style={{ backgroundImage:`url(${background})`}} onClick={onClose} />
       <div id="modal-content">
         <div className='logo-image-div'>
           <img id='logo-image' src='https://cdn-icons-png.flaticon.com/512/889/889669.png' alt='post-it' />

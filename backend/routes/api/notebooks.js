@@ -16,7 +16,7 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
             userId: userId
         },
         include: [db.Note],
-        order: ['id', 'DESC']
+        // order: ['id', 'DESC']
     });
 
     return res.json(notebooks)
@@ -27,7 +27,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
     const notebook = await db.Notebook.findByPk(notebookId, {
         include: [db.Note],
-        order: ['id', 'DESC']
+        // order: ['id', 'DESC']
     });
 
     return res.json(notebook)
@@ -58,13 +58,15 @@ router.put('/:id', asyncHandler(async (req, res) => {
 //Delete notebook
 router.delete('/:id', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
-    const notbook = await db.Notebook.findByPk(notebookId);
+    const notebook = await db.Notebook.findByPk(parseInt(notebookId));
+    // console.log(notebook);
     const userId = notebook.userId;
+    // console.log(notebook.userId)
 
     await notebook.destroy();
-    const notebooks = await Notebook.findAll({
+    const notebooks = await db.Notebook.findAll({
         where: {
-            useId: userId,
+            userId: userId,
         }
     });
 

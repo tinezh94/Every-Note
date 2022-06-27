@@ -4,3 +4,59 @@
     border: none;
     color: pink;
 }
+
+.homepage-logo-title {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#logo-image {
+    width: 46px;
+    height: 46px;
+    padding-top: 10px;
+    padding: 10px;
+}
+
+.homepage-title {
+    display: inline-block;
+    padding-left: 6px;
+    margin-top: 16px;
+    font-family: "Soleil", Helvetica, Arial, sans-serif;
+}
+
+.homepage-nav {
+    display: flex;
+}
+
+/* .homepage-nav-bar {}
+
+ul li {
+    overflow: hidden;
+} */
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+.nav-home {
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    text-align: center;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    background-color: white;
+    line-height: 1em;
+    text-decoration: none;
+}
+
+.nav-home:visited {
+    color: black;
+}
+
+.nav-home:hover {
+    color: #00a82d;
+    cursor: pointer;
+}
