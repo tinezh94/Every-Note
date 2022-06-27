@@ -7,62 +7,91 @@ const DELETE_NOTEBOOK = 'notebooks/DELETE_NOTEBOOK';
 
 //action creators
 const getNotebooks = notebooks => {
-    type: GET_NOTEBOOKS,
-    notebooks
+    return {
+        type: GET_NOTEBOOKS,
+        notebooks
+    }
 };
 
 const createNotebook = notebook => {
-    type: CREATE_NOTEBOOK,
-    notebook
+    return {
+        type: CREATE_NOTEBOOK,
+        notebook
+    }
 };
 
 const updateNotebook = notebook => {
-    type: UPDATE_NOTEBOOK,
-    notebook
+    return {
+        type: UPDATE_NOTEBOOK,
+        notebook
+    }
 };
 
 const deleteNotebook = notebookId => {
-    type: DELETE_NOTEBOOK,
-    notebookId
+    return {
+        type: DELETE_NOTEBOOK,
+        notebookId
+    }
 };
 
 //thunk action creators
 export const getNotebooksThunk = (userId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/notebooks/user/${userId}`);
+    const res = await fetch(`/api/notebooks/user/${userId}`);
 
     if (res.ok) {
-        const data = res.json();
+        const data = await res.json();
         dispatch(getNotebooks(data));
         return res;
     }
 };
 
-// const createNotebookThunk = user
+export const createNotebookThunk = (newNotebook) => async (dispatch) => {
+    const res = await csrfFetch('/api/notebooks', {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newNotebook)
+    })
 
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(createNotebook(data));
+        return res;
+    }
+}
+
+export const deleteNotebookThunk = (notebookId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/notebooks/${notebookId}`, {
+        method: "DELETE"
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(deleteNotebook(data));
+        return res;
+    }
+}
+
+const initialState = {};
 
 //reducer
-const notebooksReducer = (state= {}, action) => {
-    let newState;
+const notebooksReducer = (state= initialState, action) => {
+    let newState = { ...state };
+
     switch (action.type) {
         case GET_NOTEBOOKS:
-            newState = {};
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
             });
-            return {
-                ...state,
-                ...newState
-            }
+            return newState;
         case CREATE_NOTEBOOK:
-            newState = { ...state};
-            newState.user = action.payload;
+            newState.notebook = action.payload;
             return newState;
         case UPDATE_NOTEBOOK:
             newState = { ...state};
-            newState.user = action.payload;
+
+            newState.notebook.id = action.payload;
             return newState;
         case DELETE_NOTEBOOK:
-            const newState = { ...state };
             delete newState[action.notebookId];
             return newState;
         default:
