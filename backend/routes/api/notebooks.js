@@ -34,10 +34,10 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 }))
 //Create notebook
-router.post('/user/:id', asyncHandler(async (req, res) => {
-    const userId = req.params.id;
+router.post('/', asyncHandler(async (req, res) => {
+    // const userId = req.params.id;
 
-    const { name } = req.body;
+    const { name, userId } = req.body;
     const notebook = await db.Notebook.create({
         name,
         userId: userId,
