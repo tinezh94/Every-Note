@@ -26,13 +26,28 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
 router.get('/notebook/:id', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
     console.log(notebookId)
-    const notebook = await db.Notebook.findByPk(notebookId, {
+    const notebook = await db.Notebook.findByPk(notebookId,{
         include: [db.Note],
+    }
         // order: ['id', 'DESC']
-    });
+    );
     return res.json(notebook)
+}));
 
-}))
+//Get all notes belong to the notebook
+// router.get('/:id/notes', asyncHandler(async (req, res) => {
+//     console.log(req.params.id)
+//     const notebookId = res.params.id;
+//     const notes = await db.Note.findAll({
+//         where: {
+//             notebookId: notebookId
+//         },
+//         order: [["updatedAt", "DESC"]],
+//     });
+
+//     return res.json(notes);
+// }));
+
 //Create notebook
 router.post('/', asyncHandler(async (req, res) => {
     // const userId = req.params.id;

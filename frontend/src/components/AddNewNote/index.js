@@ -4,7 +4,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import { createNoteThunk } from '../../store/notes';
 import TextEditor from './richTextEditor';
 
-const AddNewNote = () => {
+const AddNewNote = ({ notebook }) => {
+    const notebookId = notebook.id;
+    console.log(notebookId)
     const [ newTitle, setNewTitle ] = useState('');
     const [ oldTitle, setOldTitle ] = useState('')
     const [ newContent, setNewContent ] = useState('');
@@ -13,7 +15,7 @@ const AddNewNote = () => {
     const [ newNote, setNewNote ] = useState(true);
 
     const sessionUser = useSelector(state => state.session.user)
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         if (newNote) {
@@ -21,14 +23,26 @@ const AddNewNote = () => {
                 title: newTitle,
                 content: newContent,
                 userId: sessionUser.id,
-                // notebookId:
-            }
+                notebookId: notebookId
+            };
+
+            let createdNote = await dispatchEvent(createNoteThunk(payload));
+            reset();
+        }
+
+        const reset = () => {
+            setNewTitle('');
+            setNewContent('');
+            setOldContent('');
+            setOldTitle('');
+            setNewNote(true);
         }
     }
 
     return (
         <>
             <div>
+                <button>Save</button>
                 <form onSubmit={onSubmit}>
                     <input
                     type="text"

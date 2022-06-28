@@ -30,7 +30,7 @@ const NotesListingPage = () => {
                 <div key={note.id}>
                     <h3>Note Title: {note.title}</h3>
                     <p>Note Content: {note.content}</p>
-                    <AddNewNote />
+                    <AddNewNote  />
                 </div>
             ))}
         </>

@@ -49,7 +49,7 @@ function App() {
           <Route exact path="/notebooks">
             <NotebookForm  />
           </Route>
-          <Route exact path="/notebooks/:id">
+          <Route exact path="/notebooks/notebook/:id">
             <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
           </Route>
           <Route exact path="/notes">
