@@ -59,6 +59,20 @@ export const createNotebookThunk = (newNotebook) => async (dispatch) => {
     }
 }
 
+export const updateNotebookThunk = (notebook) => async (dispatch) => {
+    const res = csrfFetch( `/api/notebooks/${notebook.id}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(notebook)
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(updateNotebook(data));
+        return res;
+    }
+}
+
 export const deleteNotebookThunk = (notebookId) => async (dispatch) => {
     const res = await csrfFetch(`/api/notebooks/${notebookId}`, {
         method: "DELETE"
@@ -87,8 +101,6 @@ const notebooksReducer = (state= initialState, action) => {
             newState.notebook = action.payload;
             return newState;
         case UPDATE_NOTEBOOK:
-            newState = { ...state};
-
             newState.notebook.id = action.payload;
             return newState;
         case DELETE_NOTEBOOK:

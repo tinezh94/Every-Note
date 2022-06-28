@@ -1,55 +1,43 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { createNotebookThunk } from '../../store/noteboooks';
+import { updateNotebookThunk } from '../../store/noteboooks';
 
-const CreateNotebook = () => {
-
-    const [ name, setName ] = useState('');
+const EditNotebook = () => {
+    const { notebookId } = useParams();
+    const [ editName, setEditName ] = useState('');
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
 
-    const newName = e => setName(e.target.value);
+    const newName = e => setEditName(e.target.value);
 
     const sessionUser = useSelector(state => state.session.user);
-    // const notebooksSelector = useSelector(state => state.notebooks);
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    //****** keeps rerendering ******* */
-
     useEffect(() => {
         const errors = [];
 
-        if (name.length > 50) errors.push('Notebook name cannot be longer than 50 characters');
-        if (name.length < 1) errors.push('Notebook name cannot be empty');
+        if (editName.length > 50) errors.push('Notebook name cannot be longer than 50 characters');
+        if (editName.length < 1) errors.push('Notebook name cannot be empty');
         setValidationErrors(errors);
-    }, [name]);
+    }, [editName]);
 
-    const onSubmit = async (e) => {
+    const editNotebookOnSubmit = (e, notebookId) => {
         e.preventDefault();
         setHasSubmitted(true);
         const payload = {
-            name,
-            userId: sessionUser.id,
+            editName,
+            // userId: sessionUser.id,
         }
+        dispatch(updateNotebookThunk(payload, +notebookId));
 
-        let createdNotebook = await dispatch(createNotebookThunk(payload));
-
-        //****** NEEDS DEBUGGGGGGGGG*!!!!!!!!!!!!!!!********* */
-        if (createdNotebook) reset();
-        setHasSubmitted(false);
-        history.push('/notebooks');
-    };
-
-    const reset = () => {
-        setName('');
-    };
-
+        history.push('/home');
+    }
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={editNotebookOnSubmit}>
                     {hasSubmitted && validationErrors.length > 0 (
                         <ul>
                             {validationErrors.map((error) => (
@@ -60,13 +48,13 @@ const CreateNotebook = () => {
                 <label>Name</label>
                 <input
                 type='text'
-                value={name}
+                value={editName}
                 onChange={newName}
                 />
-                <button type="submit">Create Notebook</button>
+                <button type="submit">Continue</button>
             </form>
         </>
     )
 }
 
-export default CreateNotebook;
+export default EditNotebook;

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import { Modal } from '../../context/Modal';
 import { deleteNotebookThunk, getNotebooksThunk } from '../../store/noteboooks';
+import EditNotebook from '../Homepage/EditNotebook';
 
 const NotebookForm = () => {
     const { notebookId } = useParams();
     const [ notebooks, setNotebooks ] = useState([]);
+    const [ showModal, setShowModal ] = useState(false);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -34,6 +37,14 @@ const NotebookForm = () => {
 
 return (
     <>
+      <div>
+        <button onClick={() => setShowModal(true)}>Rename Notebook</button>
+      </div>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+            <EditNotebook />
+        </Modal>
+      )}
       {notebooksSelector && notebooksArr.map(notebook => (
         <div key={notebook.id}>
             <h4>Notebook Id: {notebook.id}</h4>
