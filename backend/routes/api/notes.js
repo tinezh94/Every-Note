@@ -10,10 +10,24 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
 //Get notes
-router.get('/', asyncHandler(async (req, res) => {
-    const notes = await db.Note.findAll();
+router.get('/user/:id', asyncHandler(async (req, res) => {
+    const userId = req.params.id;
+
+    const notes = await db.Note.findAll({
+        where: {
+            userId: userId,
+        },
+        order: [["updatedAt", "DESC"]],
+    });
     return res.json(notes);
 }));
+
+// Get One Note
+router.get('/note/:id', asyncHandler(async (req, res) => {
+    const noteId = req.params.id;
+    const note = await db.Note.findByPk(noteId);
+    return res.json(note);
+}))
 
 const validationNote = [
     check('content')
@@ -23,29 +37,45 @@ const validationNote = [
     handleValidationErrors
 ];
 
+
 // Post note
 router.post('/', validationNote, asyncHandler(async (req, res) => {
     console.log(req.body)
-    const note = await db.Note.create(req.body);
-    console.log(note)
-    return res.json(note);
+    const { title, content, userId, notebookId } = req.body;
+
+    const newNote = await db.Note.create({
+        title: title,
+        content: content,
+        userId: userId,
+        notebookId: notebookId
+    });
+    console.log(newNote)
+    const notes = await db.Note.findAll({
+        where: {
+            userId,
+            notebookId
+        },
+        order: [["updatedAt", "DESC"]],
+    });
+
+    return res.json(notes);
 }));
 
 //Update note
-router.put('/:id', validationNote, asyncHandler(async (req, res) => {
+router.put('/note/:id', validationNote, asyncHandler(async (req, res) => {
     const noteId = req.params.id;
-    const { title, content } = req.body;
+    const { title, content, notebookId } = req.body;
     const note = await db.Note.findByPk(noteId);
-    await db.Note.update({
+    const newNote = await note.update({
         title,
-        content
-    },
-    {where: {}
-    })
-    return res.json(note);
+        content,
+        notebookId
+    });
+
+    return res.json(newNote);
 }));
 
-router.delete('/:id', asyncHandler(async (req, res) => {
+router.delete('/note/:id', asyncHandler(async (req, res) => {
     const noteId = req.params.id;
     const note = await db.Note.findByPk(noteId);
     await note.destroy();

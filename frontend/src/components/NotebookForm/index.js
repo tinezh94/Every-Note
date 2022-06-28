@@ -1,22 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { Modal } from '../../context/Modal';
-import { deleteNotebookThunk, getNotebooksThunk } from '../../store/noteboooks';
-import EditNotebook from '../Homepage/EditNotebook';
+// import { Modal } from '../../context/Modal';
+import { deleteNotebookThunk, getNotebooksThunk } from '../../store/notebooks';
+import EditNotebookModal from '../EditNotebookModal';
 
 const NotebookForm = () => {
     const { notebookId } = useParams();
     const [ notebooks, setNotebooks ] = useState([]);
-    const [ showModal, setShowModal ] = useState(false);
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const notebooksSelector = useSelector(state => state.notebooks);
     const sessionUser = useSelector(state => state.session.user)
+    if (!sessionUser) history.push('/');
+
+    const notebooksSelector = useSelector(state => state.notebooks);
 
     const notebooksArr = Object.values(notebooksSelector);
+
+    useEffect(() => {
+        dispatch(getNotebooksThunk(sessionUser.id));
+    },[sessionUser.id]);
 
     const onDelete = (e, notebookId) => {
         e.preventDefault();
@@ -25,9 +30,6 @@ const NotebookForm = () => {
     }
 
 
-    useEffect(() => {
-        dispatch(getNotebooksThunk(sessionUser.id));
-    },[sessionUser.id]);
 
     // useEffect(() => {
     //     if (notebooksSelector) {
@@ -37,18 +39,11 @@ const NotebookForm = () => {
 
 return (
     <>
-      <div>
-        <button onClick={() => setShowModal(true)}>Rename Notebook</button>
-      </div>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-            <EditNotebook />
-        </Modal>
-      )}
       {notebooksSelector && notebooksArr.map(notebook => (
-        <div key={notebook.id}>
-            <h4>Notebook Id: {notebook.id}</h4>
-            <h4>Notebook Name: {notebook.name}</h4>
+          <div key={notebook.id}>
+            <p>Notebook Id: {notebook?.id}</p>
+            <p>Notebook Name: {notebook?.name}</p>
+            <EditNotebookModal notebook={notebook} />
             <button onClick={(e) => onDelete(e, notebook.id)}>Delete Notebook</button>
         </div>
       ))}

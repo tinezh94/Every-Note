@@ -1,44 +1,62 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { updateNotebookThunk } from '../../store/noteboooks';
+import { getNotebooksThunk, updateNotebookThunk } from '../../store/notebooks';
 
-const EditNotebook = () => {
-    const { notebookId } = useParams();
+const EditNotebook = ({ notebook, hideForm }) => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    // const { notebookId } = useParams();
     const [ editName, setEditName ] = useState('');
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
 
-    const newName = e => setEditName(e.target.value);
-
     const sessionUser = useSelector(state => state.session.user);
+    const allNotebooks = useSelector(state => state.notebooks);
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+    console.log(notebook)
+
 
     useEffect(() => {
-        const errors = [];
+        dispatch(getNotebooksThunk(sessionUser.id));
+    },[dispatch]);
+
+    useEffect(() => {
+        let errors = [];
 
         if (editName.length > 50) errors.push('Notebook name cannot be longer than 50 characters');
         if (editName.length < 1) errors.push('Notebook name cannot be empty');
         setValidationErrors(errors);
     }, [editName]);
 
-    const editNotebookOnSubmit = (e, notebookId) => {
+    const editNotebookOnSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
-        const payload = {
-            editName,
-            // userId: sessionUser.id,
-        }
-        dispatch(updateNotebookThunk(payload, +notebookId));
 
-        history.push('/home');
+        const payload = {
+            id: notebook.id,
+            name: editName,
+            userId: sessionUser.id,
+        }
+        console.log(payload)
+        let editedNotebook = await dispatch(updateNotebookThunk(payload));
+        console.log(editedNotebook)
+        setHasSubmitted(false);
+        hideForm();
+        history.push(`/notebooks/${notebook.id}`);
+    }
+
+    const editNotebookCancel = (e) => {
+        e.preventDefault();
+        setValidationErrors({});
+        hideForm();
+        history.push(`/notebooks/${notebook.id}`);
     }
     return (
         <>
             <form onSubmit={editNotebookOnSubmit}>
-                    {hasSubmitted && validationErrors.length > 0 (
+                    {hasSubmitted && validationErrors.length > 0 && (
                         <ul>
                             {validationErrors.map((error) => (
                             <li key={error}>{error}</li>
@@ -49,9 +67,10 @@ const EditNotebook = () => {
                 <input
                 type='text'
                 value={editName}
-                onChange={newName}
+                onChange={(e) => setEditName(e.target.value)}
                 />
                 <button type="submit">Continue</button>
+                <button type="button" onClick={editNotebookCancel}>Cancel</button>
             </form>
         </>
     )

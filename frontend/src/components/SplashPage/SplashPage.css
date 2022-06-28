@@ -1,0 +1,77 @@
+h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+}
+
+.description {
+    text-align: center;
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 40px;
+    padding-bottom: 30px;
+    margin-bottom: 0px;
+}
+
+.signup-button-div {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.splash-page-signup-button {
+    border-radius: 3px;
+    width: 220px;
+    background-color: #00a82d;
+    border: none;
+    height: 30px;
+}
+
+.signup-button-primary {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    line-height: 1.25em;
+    color: white;
+}
+
+.signup-button-primary:visited {
+    color: white;
+}
+
+.splash-page-signup-button:hover {
+    background-color: #027921;
+    cursor: pointer;
+}
+
+.splash-page-image {
+    width: 1000px;
+    height: 750px;
+}
+
+.splash-page-body-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.splash-page-body-texts {
+    padding-right: 50px;
+    padding-top: 60px;
+}
+
+h3 {
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    letter-spacing: 1;
+    font-weight: 550;
+}
+
+.splash-page-body-text-p {
+    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0;
+
+}

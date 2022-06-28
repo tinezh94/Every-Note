@@ -5,19 +5,24 @@ import { useSelector } from "react-redux";
 // import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-// import * as notebookActions from "./store/noteboooks"
+// import * as notebookActions from "./store/notebooks"
 import NotebookForm from "./components/NotebookForm";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import SignupForm from "./components/SignupFormModal/SignupForm";
-import CreateNotebook from "./components/Homepage/CreateNotebook";
+// import CreateNotebook from "./components/Homepage/CreateNotebook";
 import Homepage from "./components/Homepage/Homepage";
+import SplashPage from "./components/SplashPage/SplashPage";
+// import EditNotebook from "./components/EditNotebookModal/EditNotebook";
+import NotebookDetailPage from './components/NotebookDetailPage';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
+  const allNotebooks = useSelector(state => state.notebooks);
 
+  // Restore user
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -27,8 +32,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             {sessionUser ? <Redirect to='/home' /> : null}
+            <SplashPage />
+          </Route>
+          <Route exact path="/home">
               <Homepage />
           </Route>
           <Route exact path='/login'>
@@ -38,8 +46,11 @@ function App() {
             <SignupForm />
           </Route>
           <Route exact path="/notebooks">
-            <NotebookForm />
+            <NotebookForm  />
           </Route>
+          {/* <Route exact path="/notebooks/:id">
+            <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
+          </Route> */}
         </Switch>
       )}
     </>

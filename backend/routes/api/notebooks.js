@@ -23,13 +23,13 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
 }))
 
 //Get notebook
-router.get('/:id', asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
     const notebook = await db.Notebook.findByPk(notebookId, {
         include: [db.Note],
         // order: ['id', 'DESC']
     });
-
+    console.log(notebook)
     return res.json(notebook)
 
 }))
@@ -40,19 +40,22 @@ router.post('/', asyncHandler(async (req, res) => {
     const { name, userId } = req.body;
     const notebook = await db.Notebook.create({
         name,
-        userId: userId,
+        userId,
     });
 
     return res.json(notebook);
 }))
 
 //Update notebook
-router.put('/:id', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
     const { name } = req.body;
     const notebook = await db.Notebook.findByPk(notebookId);
-    notebook.name = name;
-    return res.json(notebook);
+    const newNotebook = await notebook.update({
+        name
+    });
+
+    return res.json(newNotebook);
 }))
 
 //Delete notebook
