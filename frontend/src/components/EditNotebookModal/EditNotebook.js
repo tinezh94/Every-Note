@@ -44,7 +44,7 @@ const EditNotebook = ({ notebook, hideForm }) => {
         console.log(editedNotebook)
         setHasSubmitted(false);
         hideForm();
-        history.push(`/notebooks/${notebook.id}`);
+        history.push(`/notebooks/${editedNotebook.id}`);
     }
 
     const editNotebookCancel = (e) => {

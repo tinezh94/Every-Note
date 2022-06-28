@@ -17,8 +17,6 @@ const CreateNotebook = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    //****** keeps rerendering ******* */
-
     useEffect(() => {
         const errors = [];
 

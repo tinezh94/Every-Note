@@ -23,13 +23,13 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
 }))
 
 //Get notebook
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.get('/notebook/:id', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
+    console.log(notebookId)
     const notebook = await db.Notebook.findByPk(notebookId, {
         include: [db.Note],
         // order: ['id', 'DESC']
     });
-    console.log(notebook)
     return res.json(notebook)
 
 }))

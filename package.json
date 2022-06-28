@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/tinezh94/Every-Note/issues"
   },
-  "homepage": "https://github.com/tinezh94/Every-Note#readme"
+  "homepage": "https://github.com/tinezh94/Every-Note#readme",
+  "dependencies": {
+    "quill": "^1.3.6"
+  }
 }

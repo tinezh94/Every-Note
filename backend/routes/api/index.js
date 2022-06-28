@@ -10,7 +10,7 @@ router.use('/users', usersRouter);
 
 router.use('/notebooks', notebooksRouter);
 
-router.use('/notes',notesRouter);
+router.use('/notes', notesRouter);
 
 
 module.exports = router;

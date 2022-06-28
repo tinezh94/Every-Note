@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS';
-// const GET_ONE_NOTEBOOK ='notebooks/GET_ONE_NOTEBOOK';
+const GET_NOTEBOOK ='notebooks/GET_NOTEBOOK';
 const CREATE_NOTEBOOK = 'notebooks/CREATE_NOTEBOOK';
 const UPDATE_NOTEBOOK = 'notebooks/UPDATE_NOTEBOOK';
 const DELETE_NOTEBOOK = 'notebooks/DELETE_NOTEBOOK';
@@ -14,12 +14,12 @@ const getNotebooks = notebooks => {
     }
 };
 
-// const getOneNotebook = notebookId => {
-//     return {
-//         type: GET_ONE_NOTEBOOK,
-//         notebookId
-//     }
-// };
+const getOneNotebook = notebook => {
+    return {
+        type: GET_NOTEBOOK,
+        notebook
+    }
+};
 
 const createNotebook = notebook => {
     return {
@@ -53,17 +53,17 @@ export const getNotebooksThunk = (userId) => async (dispatch) => {
     }
 };
 
-// export const getOneNotebookThunk = (notebookId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/notebooks/${notebookId}`);
-//     console.log(notebookId)
+export const getOneNotebookThunk = (notebookId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/notebooks/notebook/${notebookId}`);
+    console.log(notebookId)
 
-//     if (res.ok) {
-//         const data= await res.json();
-//         console.log(data)
-//         dispatch(getOneNotebook(data));
-//         return data;
-//     }
-// }
+    if (res.ok) {
+        const data= await res.json();
+        console.log(data)
+        dispatch(getOneNotebook(data));
+        return data;
+    }
+}
 
 export const createNotebookThunk = (newNotebook) => async (dispatch) => {
     const res = await csrfFetch('/api/notebooks', {
@@ -118,14 +118,14 @@ const notebooksReducer = (state= initialState, action) => {
                 newState[notebook.id] = notebook;
             });
             return newState;
-        // case GET_ONE_NOTEBOOK:
-        //     newState[action.payload.id] = action.payload;
-        //     return newState;
+        case GET_NOTEBOOK:
+            newState[action.notebookId] = action.notebook;
+            return newState;
         case CREATE_NOTEBOOK:
-            newState.notebook = action.payload;
+            newState[action.notebook.id] = action.notebook;
             return newState;
         case UPDATE_NOTEBOOK:
-            newState.notebook = action.payload;
+            newState[action.notebook.id] = action.notebook;
             return newState;
         case DELETE_NOTEBOOK:
             delete newState[action.notebookId];

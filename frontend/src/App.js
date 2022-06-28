@@ -14,6 +14,7 @@ import Homepage from "./components/Homepage/Homepage";
 import SplashPage from "./components/SplashPage/SplashPage";
 // import EditNotebook from "./components/EditNotebookModal/EditNotebook";
 import NotebookDetailPage from './components/NotebookDetailPage';
+import NotesListingPage from "./components/NotesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,9 +49,12 @@ function App() {
           <Route exact path="/notebooks">
             <NotebookForm  />
           </Route>
-          {/* <Route exact path="/notebooks/:id">
+          <Route exact path="/notebooks/:id">
             <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
-          </Route> */}
+          </Route>
+          <Route exact path="/notes">
+            <NotesListingPage />
+          </Route>
         </Switch>
       )}
     </>
