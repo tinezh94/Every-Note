@@ -29,6 +29,9 @@ const NotebookForm = () => {
         history.push('/home');
     }
 
+    useEffect (() => {
+        setNotebooks(notebooksSelector)
+    }, [notebooks]);
 
 
     // useEffect(() => {
