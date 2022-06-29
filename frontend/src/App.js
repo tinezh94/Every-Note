@@ -15,6 +15,7 @@ import SplashPage from "./components/SplashPage/SplashPage";
 // import EditNotebook from "./components/EditNotebookModal/EditNotebook";
 import NotebookDetailPage from './components/NotebookDetailPage';
 import NotesListingPage from "./components/NotesPage";
+import AddNewNote from "./components/AddNewNote";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +35,8 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            {sessionUser ? <Redirect to='/home' /> : null}
             <SplashPage />
+              {sessionUser ? <Redirect to='/home' /> : null}
           </Route>
           <Route exact path="/home">
               <Homepage />
@@ -51,6 +52,7 @@ function App() {
           </Route>
           <Route exact path="/notebooks/notebook/:id">
             <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
+            <AddNewNote />
           </Route>
           <Route exact path="/notes">
             <NotesListingPage />

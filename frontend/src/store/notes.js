@@ -98,10 +98,10 @@ const notesReducer = (state = initialState, action) => {
             });
             return newState;
         case ADD_NOTE:
-            newState.note = action.payload;
+            newState.note = action.note;
             return newState;
         case EDIT_NOTE:
-            newState.note = action.payload;
+            newState.note = action.note;
             return newState;
         case DELETE_NOTE:
             delete newState[action.noteId];

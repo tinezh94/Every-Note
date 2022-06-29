@@ -30,7 +30,7 @@ router.get('/note/:id', asyncHandler(async (req, res) => {
 }))
 
 const validationNote = [
-    check('content')
+    check('title')
         .exists({checkFalsy: true})
         .notEmpty()
         .withMessage('Please provide a title for your note'),
