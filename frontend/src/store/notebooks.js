@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_NOTEBOOKS = 'notebooks/GET_NOTEBOOKS';
 const GET_NOTEBOOK ='notebooks/GET_NOTEBOOK';
-const GET_NOTES = 'notes/GET_NOTES'
+const GET_NOTES = 'notebooks//GET_NOTES'
 const CREATE_NOTEBOOK = 'notebooks/CREATE_NOTEBOOK';
 const UPDATE_NOTEBOOK = 'notebooks/UPDATE_NOTEBOOK';
 const DELETE_NOTEBOOK = 'notebooks/DELETE_NOTEBOOK';
@@ -22,10 +22,10 @@ const getOneNotebook = notebook => {
     }
 };
 
-const getNotebookNotes = (notes) => ({
-  type: GET_NOTES,
-  notes
-});
+// const getNotebookNotes = (notes) => ({
+//   type: GET_NOTES,
+//   notes
+// });
 
 const createNotebook = notebook => {
     return {
@@ -72,14 +72,14 @@ export const getOneNotebookThunk = (notebookId) => async (dispatch) => {
     }
 };
 
-export const getNotebookNotesThunk = (notebookId) => async (dispatch) => {
-    const res = await fetch(`/api/notebooks/notebook/${notebookId}`);
+// export const getNotebookNotesThunk = (notebookId) => async (dispatch) => {
+//     const res = await fetch(`/api/notebooks/notebook/${notebookId}`);
 
-    if (res.ok) {
-      const data = await res.json();
-      dispatch(getNotebookNotes(data));
-    }
-};
+//     if (res.ok) {
+//       const data = await res.json();
+//       dispatch(getNotebookNotes(data));
+//     }
+// };
 
 export const createNotebookThunk = (newNotebook) => async (dispatch) => {
     const res = await csrfFetch('/api/notebooks', {
@@ -132,17 +132,21 @@ const notebooksReducer = (state= initialState, action) => {
         case GET_NOTEBOOKS:
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
+                newState[notebook.id].notes = {};
+                newState[notebook.id].Notes.forEach(note => {
+                    newState[notebook.id].notes[note.id] = note
+                });
             });
             return newState;
         case GET_NOTEBOOK:
             newState[action.notebookId] = action.notebook;
             return newState;
-        case GET_NOTES:
-            // return { ...state, notes: action.notes };
-            action.notes.Notes.forEach(note => {
-                newState[note.id] = note;
-            });
-            return newState;
+        // case GET_NOTES:
+        //     // return { ...state, notes: action.notes };
+        //     action.notes.forEach(note => {
+        //         newState[note.id] = note;
+        //     });
+        //     return newState;
         case CREATE_NOTEBOOK:
             newState[action.notebook.id] = action.notebook;
             return newState;

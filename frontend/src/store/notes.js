@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const GET_NOTES = 'notes/GET_NOTES';
+const GET_NOTE = 'notes/GET_NOTE'
 const ADD_NOTE = 'notes/ADD_NOTE';
 const EDIT_NOTE = 'notes/EDIT_NOTE';
 const DELETE_NOTE = 'notes/DELETE_NOTE';
@@ -11,6 +12,13 @@ const getNotes = notes => {
     return {
         type: GET_NOTES,
         notes
+    }
+};
+
+const getNote = note => {
+    return {
+        type: GET_NOTE,
+        note
     }
 };
 
@@ -43,6 +51,17 @@ export const getNotesThunk = (userId) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(getNotes(data));
+        return data;
+    }
+};
+
+export const getOneNote = noteId => async (dispatch) => {
+    const res = await csrfFetch(`apt/notes/note/${noteId}`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getNote(data));
+        return data;
     }
 };
 
@@ -55,8 +74,9 @@ export const createNoteThunk = (newNote) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        // console.log(data)
+        console.log(data)
         dispatch(addNote(newNote));
+        return data;
     }
 };
 
@@ -70,6 +90,7 @@ export const editNoteThunk = (note) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(editNote(data));
+        return data;
     }
 };
 
@@ -80,7 +101,9 @@ export const deleteNoteThunk = (noteId) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
+        console.log(data)
         dispatch(deleteNote(data));
+        return res;
     }
 };
 
@@ -94,9 +117,12 @@ const notesReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_NOTES:
-            action.notes.Notes.forEach(note => {
+            action.notes.forEach(note => {
                 newState[note.id] = note;
             });
+            return newState;
+        case GET_NOTE:
+            newState[action.noteId] = action.note;
             return newState;
         case ADD_NOTE:
             newState[action.note.id] = action.note;

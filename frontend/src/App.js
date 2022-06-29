@@ -52,7 +52,7 @@ function App() {
           </Route>
           <Route exact path="/notebooks/notebook/:id">
             <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
-            <AddNewNote />
+            {/* <AddNewNote /> */}
           </Route>
           <Route exact path="/notes">
             <NotesListingPage />

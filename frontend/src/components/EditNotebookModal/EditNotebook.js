@@ -51,7 +51,7 @@ const EditNotebook = ({ notebook, hideForm }) => {
         e.preventDefault();
         setValidationErrors({});
         hideForm();
-        history.push(`/notebooks/${notebook.id}`);
+        history.push(`/notebooks/notebook/${notebook.id}`);
     }
     return (
         <>

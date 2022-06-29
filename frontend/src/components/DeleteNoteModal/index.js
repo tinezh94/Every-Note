@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import AddNeNoteForm from './AddNewNoteForm';
+import DeleteNote from './DeleteNoteForm';
 
-const AddNewNoteModal = () => {
+const DeleteNoteModal = ({ note }) => {
     const [ showModal, setShowModal ] = useState(false);
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Add New Note</button>
+            <button onClick={() => setShowModal(true)}>Delete Note</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AddNeNoteForm hideForm={() => setShowModal(false)} />
+                    <DeleteNote note={note} hideForm={() => setShowModal(false)} />
                 </Modal>
             )}
         </>
     )
 }
 
-export default AddNewNoteModal;
+export default DeleteNoteModal;

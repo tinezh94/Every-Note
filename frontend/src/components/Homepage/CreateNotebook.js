@@ -40,7 +40,7 @@ const CreateNotebook = () => {
         //****** NEEDS DEBUGGGGGGGGG*!!!!!!!!!!!!!!!********* */
         if (createdNotebook) reset();
         setHasSubmitted(false);
-        history.push(`/notebooks/${createdNotebook.id}`);
+        history.push(`/notebooks/notebook/${createdNotebook.id}`);
     };
 
     const reset = () => {
