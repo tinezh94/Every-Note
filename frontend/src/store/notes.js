@@ -55,6 +55,7 @@ export const createNoteThunk = (newNote) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
+        // console.log(data)
         dispatch(addNote(newNote));
     }
 };
@@ -93,15 +94,15 @@ const notesReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_NOTES:
-            action.notes.forEach(note => {
+            action.notes.Notes.forEach(note => {
                 newState[note.id] = note;
             });
             return newState;
         case ADD_NOTE:
-            newState.note = action.note;
+            newState[action.note.id] = action.note;
             return newState;
         case EDIT_NOTE:
-            newState.note = action.note;
+            newState[action.note.id] = action.note;
             return newState;
         case DELETE_NOTE:
             delete newState[action.noteId];
