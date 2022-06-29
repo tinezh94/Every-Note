@@ -77,9 +77,13 @@ router.put('/note/:id', validationNote, asyncHandler(async (req, res) => {
 
 router.delete('/note/:id', asyncHandler(async (req, res) => {
     const noteId = req.params.id;
+
+    console.log('BACKEND DELETE ROUTE, NOTE ID', noteId);
     const note = await db.Note.findByPk(noteId);
+    console.log("THIS IS NOTE TO DELETE", note)
     await note.destroy();
-    res.json({noteId});
+    console.log('NOTE IS DESTRYOYED')
+    res.json(noteId);
 }));
 
 module.exports = router;

@@ -7,6 +7,23 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+router.use((req, res, next) => {
+    console.log("In THE NOTEBOOK ROUTER");
+    next();
+})
+//Get all notes belong to the notebook
+router.get('/:id(\\d+)/notes', asyncHandler(async (req, res) => {
+    const notebookId = req.params.id;
+    console.log("In backend route, get notes", notebookId)
+    const notes = await db.Note.findAll({
+        where: {
+            notebookId: notebookId
+        },
+        order: [["updatedAt", "DESC"]],
+    });
+    console.log("These are notes", notes)
+    res.json(notes);
+}));
 
 //Get notebooks
 router.get('/user/:id', asyncHandler(async(req, res) => {
@@ -34,19 +51,6 @@ router.get('/notebook/:id', asyncHandler(async (req, res) => {
     return res.json(notebook)
 }));
 
-//Get all notes belong to the notebook
-// router.get('/:id/notes', asyncHandler(async (req, res) => {
-//     console.log(req.params.id)
-//     const notebookId = res.params.id;
-//     const notes = await db.Note.findAll({
-//         where: {
-//             notebookId: notebookId
-//         },
-//         order: [["updatedAt", "DESC"]],
-//     });
-
-//     return res.json(notes);
-// }));
 
 //Create notebook
 router.post('/', asyncHandler(async (req, res) => {

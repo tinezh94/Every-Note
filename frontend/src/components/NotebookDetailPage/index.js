@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getNotebooksThunk, getOneNotebookThunk, getNotebookNotesThunk } from '../../store/notebooks';
+import { getNotebooksThunk, getOneNotebookThunk } from '../../store/notebooks';
 import EditNotebook from '../EditNotebookModal/EditNotebook';
 // import AddNewNote from '../AddNewNote';
 import AddNewNoteModal from '../AddNewNoteModal';
 import EditNoteModal from '../EditNoteModal';
 import DeleteNoteModal from '../DeleteNoteModal';
+import { getNotebookNotesThunk } from '../../store/notes';
 
 const NotebobookDetailPage = ( { sessionUser }) => {
     const dispatch = useDispatch();
@@ -19,17 +20,20 @@ const NotebobookDetailPage = ( { sessionUser }) => {
     const allNotebooks = useSelector(state => state.notebooks);
     const notebook = allNotebooks[id];
 
-    const notesSelector = useSelector(state => state.notes);
-    const notesArr = Object.values(notesSelector);
+    // const notesSelector = useSelector(state => state.notes);
+    // const notesArr = Object.values(notesSelector);
     // console.log(notesArr)
 
+    const notes = useSelector(state => state.notes);
+    const notesArr = Object.values(notes);
     // const [ loaded, setLoaded ] = useState(false);
     useEffect(() => {
-        dispatch(getNotebooksThunk(sessionUser.id));
         dispatch(getOneNotebookThunk(id));
-        // dispatch(getNotebookNotesThunk(id));
+        dispatch(getNotebooksThunk(sessionUser.id));
+        dispatch(getNotebookNotesThunk(id));
     }, [dispatch]);
 
+    // dispatch(getNotebookNotesThunk(id));
     console.log(notebook)
     // setLoaded(true);
     // let notes = Object.values(notebook)
@@ -37,17 +41,18 @@ const NotebobookDetailPage = ( { sessionUser }) => {
     // if (loaded) {
 
 
+
         return (
             <>
             <AddNewNoteModal />
 
-          {notebook && (
+          {notebook && notesArr && (
               <div>
                 <h1>{notebook.name}</h1>
-                {notebook.Notes && notebook.Notes.map(note => (
+                {notesArr && notesArr.map(note => (
                     <div>
-                        <h4>{note.title}</h4>
-                        <p>{note.content}</p>
+                        <h4 key={note.titie}>{note.title}</h4>
+                        <p key={note.content}>{note.content}</p>
                         <EditNoteModal note={note} />
                         <DeleteNoteModal note={note} />
                     </div>

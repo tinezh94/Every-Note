@@ -22,6 +22,11 @@ const getNote = note => {
     }
 };
 
+const getNotebookNotes = (notes) => ({
+  type: GET_NOTES,
+  notes
+});
+
 const addNote = note => {
     return {
         type: ADD_NOTE,
@@ -52,6 +57,18 @@ export const getNotesThunk = (userId) => async (dispatch) => {
         const data = await res.json();
         dispatch(getNotes(data));
         return data;
+    }
+};
+
+export const getNotebookNotesThunk = (notebookId) => async (dispatch) => {
+    console.log("IN GET NOTEBOOK NOTES", notebookId)
+    const res = await fetch(`/api/notebooks/${notebookId}/notes`);
+
+    console.log("IN GET NOTEBOOK NOTES after fetch", res)
+    if (res.ok) {
+      const data = await res.json();
+      console.log("In res.ok, this is data", data)
+      dispatch(getNotebookNotes(data));
     }
 };
 
@@ -95,13 +112,15 @@ export const editNoteThunk = (note) => async (dispatch) => {
 };
 
 export const deleteNoteThunk = (noteId) => async (dispatch) => {
+    console.log("DELETE NOTE THUNK", noteId);
     const res = await csrfFetch(`/api/notes/note/${noteId}`, {
         method: "DELETE"
     });
-
+    console.log('DELETE THUNK AFTER FETCH', res);
     if (res.ok) {
+        console.log('IN IF RES.OK')
         const data = await res.json();
-        console.log(data)
+        console.log("IN RES.OK, THIS IS DATA FROM BACKEND", data)
         dispatch(deleteNote(data));
         return res;
     }
@@ -113,10 +132,11 @@ export const deleteNoteThunk = (noteId) => async (dispatch) => {
 const initialState = {};
 
 const notesReducer = (state = initialState, action) => {
-    let newState = { ...state };
+    let newState;
 
     switch (action.type) {
         case GET_NOTES:
+            console.log("IN REDUCER GET NOTES", action)
             action.notes.forEach(note => {
                 newState[note.id] = note;
             });
@@ -125,12 +145,16 @@ const notesReducer = (state = initialState, action) => {
             newState[action.noteId] = action.note;
             return newState;
         case ADD_NOTE:
+            newState = { ...state };
             newState[action.note.id] = action.note;
             return newState;
         case EDIT_NOTE:
+            newState = { ...state };
             newState[action.note.id] = action.note;
             return newState;
         case DELETE_NOTE:
+            console.log("IN DELETE REDUCER, THIS IS ACTION", action, action.noteId)
+            newState = { ...state };
             delete newState[action.noteId];
             return newState;
         default:

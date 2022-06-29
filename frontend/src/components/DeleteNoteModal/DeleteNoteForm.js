@@ -8,16 +8,13 @@ const DeleteNote = ({ note, hideForm }) => {
     const history = useHistory();
     const { id } = useParams();
 
-    const notes = useSelector(state => state.notes);
 
-    useEffect(() => {
-        dispatch(getNotesThunk(id));
-    }, [dispatch, notes, history]);
 
-    const onDelete = (e, noteId) => {
+    const onDelete = async (e, noteId) => {
         e.preventDefault();
-        console.log(note);
-        dispatch(deleteNoteThunk(noteId));
+        console.log("This is deleted note:", note, noteId);
+        await dispatch(deleteNoteThunk(noteId));
+        await dispatch(getNotesThunk(id))
         hideForm();
         history.push(`/notebooks/notebook/${id}`);
     };
