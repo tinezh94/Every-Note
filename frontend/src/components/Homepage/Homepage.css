@@ -3,14 +3,147 @@
     ;
 } */
 
+.homepage-container {
+    margin: 0px;
+    padding: 0%;
+    background-color: rgba(13, 12, 12, 0.879);
+}
+
 .homepaga-main-container {
-    display: grid;
-    grid-template-columns: fit-content(30%) fit-content(35%) fit-content(35%);
-    grid-gap: 10px;
+    /* display: grid;
+    grid-template-columns: fit-content(30%) fit-content(70%);
+    grid-gap: 0px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100vh;
+    background-color: white;
+    position: relative;
+}
+
+.homepage-title-container {
+    background-image: url("https://t3.ftcdn.net/jpg/03/03/30/40/360_F_303304079_nmpWlmguD9PMk74oYlisOxx3bfcTF4Ht.jpg");
+    background-size: cover;
+    height: 30rem;
+    background-position: center;
+    position: relative;
+    top: -71px;
 }
 
 .welcome {
-    font-size: 24px;
+    font-size: 26px;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-weight: 400;
+    font-weight: 450;
+    text-align: left;
+    padding-left: 20px;
+    color: rgb(228, 223, 223);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.home-note-notebook-container {
+    display: flex;
+    justify-content: space-evenly;
+    min-height: 100vh;
+    position: absolute;
+    top: 250px;
+    margin-left: 7px;
+}
+
+/*  Notes View */
+
+.h1-titles {
+    font-size: 18px;
+    color: white;
+    line-height: 16px;
+    padding: 4px 0;
+    font-weight: 450;
+    text-transform: uppercase;
+    text-align: left;
+    padding-left: 5px;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.home-notes-container {
+    display: flex;
+    width: 35em;
+    height: 20em;
+    border-radius: 5px;
+    box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: white;
+    border: solid transparent 1px;
+}
+
+.note-div {
+    border: solid 0.5px lightgrey;
+    box-shadow: rgb(0, 0, 0, 0.3) 1px 2px 6px;
+    height: 85%;
+    margin: 5px;
+    margin-top: 22px;
+    width: 16rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black
+}
+
+.note-title {
+    text-align: left;
+    margin: 9px;
+    font-size: 14px;
+    line-height: 1.25em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: none;
+}
+
+.note-title:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.note-content {
+    width: 15rem;
+    height: 100%;
+    word-wrap: break-word;
+    padding: 3px;
+    padding-left: 8px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    overflow: hidden;
+}
+
+
+/* Notebooks */
+.home-notebooks-container {
+    display: flex;
+    flex-direction: column;
+    width: 27em;
+    height: 20em;
+    border-radius: 5px;
+    box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
+    overflow: scroll;
+    background-color: #ffeb82;
+    margin-left: 3px;
+    border: solid transparent 1px;
+}
+
+.notebook-title-list {
+    text-decoration: none;
+    color: black;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+}
+
+.home-notebooks-title {
+    text-align: center;
+    margin: 9px;
+    line-height: 1.25em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: none;
+}
+
+.home-notebooks-title:hover {
+    cursor: pointer;
+    /* border: 0.5px solid rgb(177, 174, 174); */
+    /* border-radius: 3px; */
+    opacity: 0.6;
 }

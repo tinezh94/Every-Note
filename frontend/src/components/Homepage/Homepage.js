@@ -5,7 +5,7 @@ import { getNotebooksThunk } from '../../store/notebooks';
 import { getNotesThunk } from '../../store/notes';
 import SideNavBar from '../SideNavBar';
 // import CreateNotebook from './CreateNotebook';
-import HomeNoteooksView from './HomeNotebooksView';
+import HomeNotebooksView from './HomeNotebooksView';
 import HomeNotesView from './HomeNotesView';
 import './Homepage.css'
 
@@ -29,28 +29,18 @@ function Homepage() {
     // console.log(notes)
     return (
         <div className='homepage-container'>
-            {/* <div>
-                <button className='add-notebook' onClick={() => setShowModal(true)}>
-                    <i class="fa-solid fa-plus"></i>
-                    New Notebook
-                </button>
-            </div>
-                {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                        <CreateNotebook />
-                    </Modal>
-                )} */}
+            <SideNavBar />
             <div className='homepaga-main-container'>
-                <SideNavBar />
-                <div>
-                    <h1 className='welcome'>Welcome {sessionUser.username}</h1>
+                <div className='homepage-title-container'>
+                    <h1 className='welcome'>Welcome {sessionUser.username} !</h1>
+                </div>
+
+                <div className='home-note-notebook-container'>
                     <div>
                         <HomeNotesView notes={notes} />
                     </div>
-                </div>
-                <div>
                     <div>
-                        <HomeNoteooksView notebooks={{notebooks}}/>
+                        <HomeNotebooksView notebooks={notebooks}/>
                     </div>
                 </div>
             </div>

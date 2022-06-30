@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import './Homepage.css'
 
 const HomeNotesView = ({ notes }) => {
     //  console.log(notes)
@@ -7,13 +8,13 @@ const HomeNotesView = ({ notes }) => {
     return (
         <>
             <div>
-                <h1>Notes</h1>
+                <h1 className="h1-titles">Notes</h1>
             </div>
-            <div>
+            <div className="home-notes-container">
                 {notesArr?.map(note => (
-                    <NavLink key={note.id} to={`/notebooks/notebook/${note.notebookId}`}>
-                        <h3>{note.title}</h3>
-                        <p>{note.content}</p>
+                    <NavLink className={'note-div'} key={note.id} to={`/notebooks/notebook/${note.notebookId}`}>
+                        <h3 className="note-title">{note.title}</h3>
+                        <p className="note-content">{note.content}</p>
                     </NavLink>
                 ))}
             </div>
