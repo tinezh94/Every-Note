@@ -73,7 +73,7 @@ function LoginForm() {
       </form>
       <div className="switch-to-signup-div">
         <p className="no-account">Don't have an account?</p>
-
+        {/* <button className="create-account" onClick={handleClick}>Create account</button> */}
         <NavLink className="create-account" to='/signup'>Create account</NavLink>
       </div>
     </div>

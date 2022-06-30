@@ -1,0 +1,16 @@
+/* .homepage-container {
+    display: grid;
+    ;
+} */
+
+.homepaga-main-container {
+    display: grid;
+    grid-template-columns: fit-content(30%) fit-content(35%) fit-content(35%);
+    grid-gap: 10px;
+}
+
+.welcome {
+    font-size: 24px;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+}

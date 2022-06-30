@@ -31,10 +31,11 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
           <Route exact path="/">
+            <Navigation isLoaded={isLoaded}/>
             <SplashPage />
               {sessionUser ? <Redirect exact to='/home' /> : null }
           </Route>
