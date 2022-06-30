@@ -54,7 +54,7 @@ const NotebobookDetailPage = ( { sessionUser }) => {
                 <h1>{notebook.name}</h1>
                 {notesArr && notesArr.map(note => (
                     <div>
-                        <h4 key={note.titie}>{note.title}</h4>
+                        <h4 key={note.title}>{note.title}</h4>
                         <p key={note.content}>{note.content}</p>
                         <EditNoteModal note={note} />
                         <DeleteNoteModal note={note} />

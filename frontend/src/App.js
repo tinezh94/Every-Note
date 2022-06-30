@@ -36,7 +36,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <SplashPage />
-              {sessionUser ? <Redirect to='/home' /> : null}
+              {sessionUser ? <Redirect exact to='/home' /> : null }
           </Route>
           <Route exact path="/home">
               <Homepage />
@@ -52,10 +52,12 @@ function App() {
           </Route>
           <Route exact path="/notebooks/notebook/:id">
             <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
-            {/* <AddNewNote /> */}
           </Route>
           <Route exact path="/notes">
             <NotesListingPage />
+          </Route>
+          <Route>
+            Page Not Found
           </Route>
         </Switch>
       )}

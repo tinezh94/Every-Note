@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import SignupFormMoal from '../SignupFormModal';
+import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -18,27 +18,43 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <SignupFormMoal />
+        <SignupFormModal />
       </>
     );
   }
 
   return (
     <div className='homepage-nav'>
-      {/* <div className='homepage-logo-title'> */}
-        <a href='/'>
+      <div className='homepage-logo-title'>
+        <NavLink exact to='/home'>
           <img id='logo-image' src='https://cdn-icons-png.flaticon.com/512/889/889669.png' alt='post-it' />
-        </a>
+        </NavLink>
         <h1 className='homepage-title'>EveryNote</h1>
-      {/* </div>
-      <div> */}
+      </div>
+      <div className='nav-bar-btns-container'>
         <ul className='nav-buttons-div'>
           <li className='nav-buttons'>
-            <NavLink className={'nav-home'} exact to="/">Home</NavLink>
-            {isLoaded && sessionLinks}
+            <NavLink className={'nav-home'} exact to="/home">Home</NavLink>
           </li>
         </ul>
-      {/* </div> */}
+      <div className='nav-btn-user-container'>
+          <ul className='nav-btn-user-div'>
+            <div>
+              {isLoaded && (
+                <li>
+                  {sessionLinks}
+                </li>
+                )
+              }
+            </div>
+          </ul>
+      </div>
+
+        {sessionUser && (
+          <h3>Welcome {sessionUser.username}</h3>
+          )
+        }
+      </div>
     </div>
 
   );

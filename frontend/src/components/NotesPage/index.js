@@ -20,11 +20,11 @@ const NotesListingPage = () => {
 
     useEffect(() => {
         dispatch(getNotesThunk(sessionUser.id));
-    }, [sessionUser.id]);
+    }, [dispatch, sessionUser.id]);
 
     useEffect(() => {
         setNotes(notesSelector);
-    }, [notes]);
+    }, [notesSelector, notes]);  //?????
 
     return (
         <>

@@ -28,15 +28,36 @@
     display: flex;
 }
 
-/* .homepage-nav-bar {}
+.nav-bar-btns-container {
+    display: flex;
+}
 
-ul li {
+.nav-buttons-div {
+    display: flex;
+    justify-content: space-around;
+    font-family: "Soleil", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    margin-top: 45px;
+    margin-left: 20px;
+}
+
+
+/* ul li {
     overflow: hidden;
 } */
-
 li {
     list-style: none;
-    display: inline;
+    /* display: inline; */
+}
+
+.nav-btn-user-container {
+    display: flex;
+}
+
+.nav-btn-user-div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
 }
 
 .nav-home {

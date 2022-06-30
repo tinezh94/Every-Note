@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
+import SideNavBar from '../SideNavBar';
 import CreateNotebook from './CreateNotebook';
+
 
 function Homepage() {
     const [ showModal, setShowModal ] = useState(false);
@@ -15,6 +17,7 @@ function Homepage() {
                         <CreateNotebook />
                     </Modal>
                 )}
+            <SideNavBar />
         </>
     )
 

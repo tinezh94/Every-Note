@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css';
+import SignupFormModal from "../SignupFormModal";
+import { NavLink } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const demoUser = async () => {
+    return dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,11 +68,12 @@ function LoginForm() {
         </div>
         <div className="login-button-div">
           <button className="login-button" type="submit">Log In</button>
+          <button className="demo-login" type="submit" onClick={(demoUser)}>Demo User</button>
         </div>
       </form>
       <div className="switch-to-signup-div">
         <p className="no-account">Don't have an account?</p>
-        <a className="create-account" href="/signup">Create account</a>
+        <NavLink className="create-account" exact to='/signup'>Create account</NavLink>
       </div>
     </div>
   );
