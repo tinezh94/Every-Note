@@ -21,7 +21,7 @@ const NotebookForm = () => {
 
     useEffect(() => {
         dispatch(getNotebooksThunk(sessionUser.id));
-    },[sessionUser.id]);
+    },[dispatch]);
 
     const onDelete = (e, notebookId) => {
         e.preventDefault();
