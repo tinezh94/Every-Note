@@ -2,21 +2,25 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { deleteNoteThunk, getNotesThunk } from '../../store/notes';
-
+import { getNotebookNotesThunk } from '../../store/notes';
 const DeleteNote = ({ note, hideForm }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
 
+    const sessionUser = useSelector(state => state.session.user);
 
+    useEffect(() => {
+        if (!id) dispatch(getNotesThunk(sessionUser.id));
+        else dispatch(getNotebookNotesThunk(id));
+    }, [dispatch]);
 
     const onDelete = async (e, noteId) => {
         e.preventDefault();
         console.log("This is deleted note:", note, noteId);
         await dispatch(deleteNoteThunk(noteId));
-        await dispatch(getNotesThunk(id))
         hideForm();
-        history.push(`/notebooks/notebook/${id}`);
+        // history.push(`/notebooks/notebook/${id}`);
     };
 
     const onCancel = (e) => {

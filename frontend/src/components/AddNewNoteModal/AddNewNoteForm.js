@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getNotebookNotesThunk } from '../../store/notebooks';
-import { createNoteThunk, getNotesThunk } from '../../store/notes';
+// import { getNotebookNotesThunk } from '../../store/notebooks';
+import { createNoteThunk, getNotebookNotesThunk } from '../../store/notes';
 
 const AddNeNoteForm = ({hideForm}) => {
     const dispatch = useDispatch();
@@ -18,8 +18,7 @@ const AddNeNoteForm = ({hideForm}) => {
     const [ content, setContent ] = useState('');
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
-    const [ notes, setNotes ] = useState(notesSelector);
-
+    const [ notes, setNotes ] = useState('');
 
     useEffect(() => {
         const errors =[];
@@ -30,7 +29,8 @@ const AddNeNoteForm = ({hideForm}) => {
 
     useEffect(() => {
         setNotes(notesSelector)
-    }, [notesSelector]);
+        // dispatch(getNotebookNotesThunk(id))
+    }, [dispatch, notesSelector]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -41,9 +41,9 @@ const AddNeNoteForm = ({hideForm}) => {
             title,
             content,
             userId: sessionUser.id,
-            notebookId: id
+            notebookId: id || 1
         }
-
+        console.log("THIS IS PAY LOAD", payload)
         let createdNote = await dispatch(createNoteThunk(payload));
         // await dispatch(getNotebookNotesThunk(id));
         if (createdNote) reset();

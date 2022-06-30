@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getNotebookNotesThunk } from '../../store/notebooks';
+import { getNotebookNotesThunk, getNotesThunk } from '../../store/notes';
 import { editNoteThunk } from '../../store/notes';
 
 const EditNoteForm = ({ note, hideForm }) => {
@@ -20,12 +20,19 @@ const EditNoteForm = ({ note, hideForm }) => {
 
     console.log(note)
 
-    // useEffect(() => {
-    //     const errors =[];
+    useEffect(() => {
+        if (!id) dispatch(getNotesThunk(sessionUser.id))
+        else dispatch(getNotebookNotesThunk(id))
+    }, [dispatch, note]);
 
-    //     if (notesArr.map(note => note.title).includes(editTitle)) errors.push("Note title must be unique");
-    //     setValidationErrors(errors);
-    // },[editTitle]);
+    // useEffect(() => {
+    //     setNote(editNote)
+    // }, [dispatch, editNote])
+
+    const handleChange = e => {
+        setEditContent(e.target.value);
+
+    };
 
     const editSubmit = async (e) => {
         e.preventDefault();
@@ -33,10 +40,10 @@ const EditNoteForm = ({ note, hideForm }) => {
 
         const payload = {
             id: note.id,
-            editTitle,
-            editContent,
+            title: editTitle,
+            content: editContent,
             userId: sessionUser.id,
-            notebookId: id
+            notebookId: id || note.notebookId || 1
         }
 
         let edittedNote = await dispatch(editNoteThunk(payload));
@@ -44,6 +51,7 @@ const EditNoteForm = ({ note, hideForm }) => {
         if (edittedNote) reset();
         setHasSubmitted(false);
         hideForm();
+        // history.push(`/notebooks/notebook/${id}`)
     }
 
     const reset = () => {
@@ -75,10 +83,10 @@ const EditNoteForm = ({ note, hideForm }) => {
                 <textarea
                     placeholder='Note...'
                     value={editContent}
-                    onChange={e => setEditContent(e.target.value)}>
+                    onChange={handleChange}>
 
                 </textarea>
-                <button type="submit">Update</button>
+                <button onClick={editSubmit} type="submit">Update</button>
                 <button type="button" onClick={editCancel}>Cancel</button>
             </form>
         </>

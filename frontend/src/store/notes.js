@@ -73,7 +73,7 @@ export const getNotebookNotesThunk = (notebookId) => async (dispatch) => {
 };
 
 export const getOneNote = noteId => async (dispatch) => {
-    const res = await csrfFetch(`apt/notes/note/${noteId}`);
+    const res = await csrfFetch(`apt/notes/${noteId}`);
 
     if (res.ok) {
         const data = await res.json();
@@ -83,31 +83,36 @@ export const getOneNote = noteId => async (dispatch) => {
 };
 
 export const createNoteThunk = (newNote) => async (dispatch) => {
-    const res= await csrfFetch(`/api/notes`, {
+    console.log("IN THUNK ACTION" ,newNote)
+    const res= await csrfFetch('/api/notes', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(newNote)
     });
 
+    console.log("IN THUNK AFTER FETCH", res)
     if (res.ok) {
         const data = await res.json();
-        console.log(data)
+        console.log("IN THUNK IF RES.OK", data)
         dispatch(addNote(newNote));
         return data;
     }
 };
 
 export const editNoteThunk = (note) => async (dispatch) => {
-    const res = await csrfFetch(`/api/notes/note/${note.id}`, {
+    console.log("INSIDE EDIT THUNK ROUTE", note);
+
+    const res = await csrfFetch(`/api/notes/${note.id}`, {
         method: "PUT",
-        headers: {"Content-type": "application/json"},
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(note)
     });
-
+    console.log("IN THUNK AFTER FETCH", res)
     if (res.ok) {
+        console.log("IN RES.OK", res)
         const data = await res.json();
+        console.log("in thunk this is data", data)
         dispatch(editNote(data));
-        return data;
     }
 };
 
@@ -137,21 +142,29 @@ const notesReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_NOTES:
             console.log("IN REDUCER GET NOTES", action)
+            // newState = { ...state };
+            newState = {};
+            console.log(action.notes)
             action.notes.forEach(note => {
+                console.log(note)
                 newState[note.id] = note;
             });
             return newState;
         case GET_NOTE:
+            newState = {};
             newState[action.noteId] = action.note;
             return newState;
         case ADD_NOTE:
+            console.log("REDUCER", action, action.note)
             newState = { ...state };
             newState[action.note.id] = action.note;
             return newState;
         case EDIT_NOTE:
-            newState = { ...state };
-            newState[action.note.id] = action.note;
-            return newState;
+            console.log("IN EDIT REDUCER, THIS IS ACTION", action, action.note)
+            // newState = { ...state };
+            // newState[action.note.id] = action.note;
+            // return newState;
+            return { ...state, notes: action.note};
         case DELETE_NOTE:
             console.log("IN DELETE REDUCER, THIS IS ACTION", action, action.noteId)
             newState = { ...state };

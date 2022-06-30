@@ -16,6 +16,7 @@ const NotebobookDetailPage = ( { sessionUser }) => {
     // const currentSessionId = sessionUser.id;
     // console.log(notebook)
     const [ oldNote, setOldNote ] = useState('');
+    const [ readNote, setReadNote ] = useState(true);
 
     const allNotebooks = useSelector(state => state.notebooks);
     const notebook = allNotebooks[id];
@@ -32,6 +33,8 @@ const NotebobookDetailPage = ( { sessionUser }) => {
         dispatch(getNotebooksThunk(sessionUser.id));
         dispatch(getNotebookNotesThunk(id));
     }, [dispatch]);
+
+
 
     // dispatch(getNotebookNotesThunk(id));
     console.log(notebook)

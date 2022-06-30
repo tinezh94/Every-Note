@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getNotesThunk } from "../../store/notes";
 import AddNewNoteModal from "../AddNewNoteModal";
+import EditNoteModal from '../EditNoteModal';
+import DeleteNoteModal from '../DeleteNoteModal';
 
 const NotesListingPage = () => {
     const dispatch = useDispatch();
@@ -31,6 +33,8 @@ const NotesListingPage = () => {
                 <div key={note.id}>
                     <h3>Note Title: {note.title}</h3>
                     <p>Note Content: {note.content}</p>
+                    <EditNoteModal note={note} />
+                    <DeleteNoteModal note={note} />
                 </div>
             ))}
         </>

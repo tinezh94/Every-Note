@@ -11,6 +11,7 @@ const EditNoteModal = ({ note }) => {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditNoteForm note={note} hideForm={() => setShowModal(false)} />
+                    {/* <EditNoteOnNotesPage note={note} hideForm={() => setShowModal(false)} /> */}
                 </Modal>
             )}
         </>
