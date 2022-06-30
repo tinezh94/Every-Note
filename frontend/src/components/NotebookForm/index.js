@@ -23,15 +23,16 @@ const NotebookForm = () => {
         dispatch(getNotebooksThunk(sessionUser.id));
     },[dispatch]);
 
-    const onDelete = (e, notebookId) => {
+    const onDelete =  async (e, notebookId) => {
         e.preventDefault();
-        dispatch(deleteNotebookThunk(notebookId));
+
+        await dispatch(deleteNotebookThunk(notebookId));
         history.push('/home');
     }
 
-    useEffect (() => {
-        setNotebooks(notebooksSelector)
-    }, [notebooks]);
+    // useEffect (() => {
+    //     setNotebooks(notebooksSelector)
+    // }, [notebooks]);
 
 
     // useEffect(() => {

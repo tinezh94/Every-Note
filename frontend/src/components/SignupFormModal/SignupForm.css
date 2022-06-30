@@ -2,6 +2,9 @@
     box-sizing: border-box;
     line-height: 1em;
     border: none;
+    display: inline-flex;
+    margin-top: 7px;
+
 }
 
 .home-signup-button {
@@ -14,6 +17,7 @@
     border: none;
     background-color: white;
     line-height: 1em;
+    display: inline-block;
 }
 
 .home-signup-button:hover {

@@ -2,6 +2,11 @@
     box-sizing: border-box;
     line-height: 1em;
     border: none;
+    width: 150px;
+    margin-right: 0;
+    display: inline-flex;
+    margin-top: 10px;
+    margin-right: -20px;
 }
 
 .home-login-button {
@@ -14,6 +19,7 @@
     border: none;
     background-color: white;
     line-height: 1em;
+    display: inline;
 }
 
 .home-login-button:hover {
@@ -50,7 +56,8 @@
     padding-top: 10px;
 }
 
-.login-button {
+.login-button,
+.demo-login {
     width: 120px;
     height: 30px;
     font-family: Helvetica, Arial, sans-serif;
@@ -63,7 +70,12 @@
     cursor: pointer;
 }
 
-.login-button:hover {
+.login-button {
+    margin-right: 5px;
+}
+
+.login-button:hover,
+.demo-login:hover {
     background-color: #027921;
 }
 

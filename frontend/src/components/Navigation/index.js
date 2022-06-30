@@ -31,32 +31,33 @@ function Navigation({ isLoaded }){
         </NavLink>
         <h1 className='homepage-title'>EveryNote</h1>
       </div>
-      <div className='nav-bar-btns-container'>
-        <ul className='nav-buttons-div'>
-          <li className='nav-buttons'>
-            <NavLink className={'nav-home'} exact to="/home">Home</NavLink>
-          </li>
-        </ul>
-      <div className='nav-btn-user-container'>
+
+      <div className='nav-bar-home-container'>
+          <ul className='nav-buttons-div'>
+            <li className='nav-buttons'>
+              <NavLink className={'nav-home'} exact to="/home">Home</NavLink>
+            </li>
+          </ul>
+      </div>
+
+      <div className="nav-bav-user-container">
           <ul className='nav-btn-user-div'>
-            <div>
               {isLoaded && (
                 <li>
                   {sessionLinks}
                 </li>
                 )
               }
-            </div>
           </ul>
       </div>
 
+      <div>
         {sessionUser && (
           <h3>Welcome {sessionUser.username}</h3>
           )
         }
       </div>
     </div>
-
   );
 }
 

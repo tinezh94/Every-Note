@@ -73,7 +73,8 @@ function LoginForm() {
       </form>
       <div className="switch-to-signup-div">
         <p className="no-account">Don't have an account?</p>
-        <NavLink className="create-account" exact to='/signup'>Create account</NavLink>
+
+        <NavLink className="create-account" to='/signup'>Create account</NavLink>
       </div>
     </div>
   );
