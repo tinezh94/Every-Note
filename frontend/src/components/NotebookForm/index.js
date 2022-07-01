@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // import { Modal } from '../../context/Modal';
 import { deleteNotebookThunk, getNotebooksThunk } from '../../store/notebooks';
 import EditNotebookModal from '../EditNotebookModal';
@@ -21,13 +22,13 @@ const NotebookForm = () => {
     const sessionUser = useSelector(state => state.session.user)
     if (!sessionUser) history.push('/');
 
-    const notebooksSelector = useSelector(state => state.notebooks);
 
+    const notebooksSelector = useSelector(state => state.notebooks);
     const notebooksArr = Object.values(notebooksSelector);
 
     useEffect(() => {
         dispatch(getNotebooksThunk(sessionUser?.id));
-    },[dispatch]);
+    },[dispatch, sessionUser.id]);
 
     const onDelete =  async (e, notebookId) => {
         e.preventDefault();

@@ -35,8 +35,9 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
         include: [db.Note],
         // order: ['id', 'DESC']
     });
+    console.log("BACKEND ROUTE", notebooks)
 
-    return res.json(notebooks)
+    res.json(notebooks)
 }))
 
 //Get notebook
@@ -55,14 +56,17 @@ router.get('/notebook/:id', asyncHandler(async (req, res) => {
 //Create notebook
 router.post('/', asyncHandler(async (req, res) => {
     // const userId = req.params.id;
-
+    console.log("in backend ROUTE")
     const { name, userId } = req.body;
+    console.log("BACKEND", req.body)
     const notebook = await db.Notebook.create({
         name,
         userId,
     });
 
-    return res.json(notebook);
+    console.log("BACKEND CREATED NOTBOOK", notebook)
+
+    res.json(notebook);
 }))
 
 //Update notebook
@@ -78,14 +82,17 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
 }))
 
 //Delete notebook
-router.delete('/:id', asyncHandler(async (req, res) => {
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
+    console.log("backend ROUTE", 'notebookId')
     const notebook = await db.Notebook.findByPk(parseInt(notebookId));
     // console.log(notebook);
     const userId = notebook.userId;
     // console.log(notebook.userId)
 
     await notebook.destroy();
+
+    console.log('notebook DESTROYE backend', notebook)
     const notebooks = await db.Notebook.findAll({
         where: {
             userId: userId,
@@ -93,6 +100,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     });
 
     return res.json(notebooks);
+    console.log(notebooks)
 }))
 
 module.exports = router;

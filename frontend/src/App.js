@@ -7,8 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 // import * as notebookActions from "./store/notebooks"
 import NotebookForm from "./components/NotebookForm";
-import LoginForm from "./components/LoginFormModal/LoginForm";
-import SignupForm from "./components/SignupFormModal/SignupForm";
+import LoginFormPage from "./components/LoginFormModal/LoginFormPage";
+import SignupFormPage from "./components/SignupFormModal/SignupFormPage";
 // import CreateNotebook from "./components/Homepage/CreateNotebook";
 import Homepage from "./components/Homepage/Homepage";
 import SplashPage from "./components/SplashPage/SplashPage";
@@ -39,16 +39,16 @@ function App() {
           <Route exact path="/">
             <Navigation isLoaded={isLoaded}/>
             <SplashPage />
-            {/* {sessionUser ? <Redirect exact to='/home' /> : history.push('/') } */}
+            {sessionUser ? <Redirect exact to='/home' /> : history.push('/') }
           </Route>
           <Route exact path="/home">
               <Homepage />
           </Route>
           <Route exact path='/login'>
-            <LoginForm />
+            <LoginFormPage />
           </Route>
           <Route exact path='/signup'>
-            <SignupForm />
+            <SignupFormPage />
           </Route>
           <Route exact path="/notebooks">
             <NotebookForm  />

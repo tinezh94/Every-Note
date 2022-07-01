@@ -15,18 +15,17 @@ import './NotebookDetail.css';
 const NotebobookDetailPage = ( { sessionUser }) => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    // console.log(id)
+    console.log("THIS IS NOTEBOOK ID", id)
+
     // const currentSessionId = sessionUser.id;
     // console.log(notebook)
     const [ oldNote, setOldNote ] = useState('');
     const [ readNote, setReadNote ] = useState(true);
 
     const allNotebooks = useSelector(state => state.notebooks);
+    console.log("THIS IS ALL NOTEBOOKS", allNotebooks)
     const notebook = allNotebooks[id];
-
-    // const notesSelector = useSelector(state => state.notes);
-    // const notesArr = Object.values(notesSelector);
-    // console.log(notesArr)
+    console.log("This is notebook", notebook)
 
     const notes = useSelector(state => state.notes);
     const notesArr = Object.values(notes);
@@ -58,7 +57,6 @@ const NotebobookDetailPage = ( { sessionUser }) => {
                         {notebook && notesArr && (
                             <div id='allNotesContainer'>
                                 {notesArr && notesArr.map(note => (
-
                                         <div className='single-note-container'>
                                             <h4 className='single-note-title' key={note.title}>{note.title}</h4>
                                             <div className='single-note-content-div'>

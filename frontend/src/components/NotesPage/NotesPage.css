@@ -22,6 +22,7 @@
     justify-content: flex-end;
     margin-top: 30px;
     align-items: flex-end;
+    cursor: pointer;
 }
 
 .add-new-note {

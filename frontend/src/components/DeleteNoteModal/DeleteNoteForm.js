@@ -11,7 +11,7 @@ const DeleteNote = ({ note, hideForm }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        if (!id) dispatch(getNotesThunk(sessionUser.id));
+        if (!id) dispatch(getNotesThunk(sessionUser?.id));
         else dispatch(getNotebookNotesThunk(id));
     }, [dispatch]);
 

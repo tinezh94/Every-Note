@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import './LoginForm.css';
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
+import background from '../../context/backgroundImage.png'
 
-function LoginForm() {
+function LoginFormPage() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -52,14 +53,20 @@ function LoginForm() {
   // }
 
   return (
-    <div>
+
+    <div className="log-in-form">
+      <div id="formpage-background" style={{ backgroundImage:`url(${background})`}}></div>
       <form onSubmit={handleSubmit}>
+        <div className="logo-div">
+            <img id='form-page-logo' src='https://cdn-icons-png.flaticon.com/512/889/889669.png' alt='post-it' />
+        </div>
+        <h1 id='log-in-h1'> EveryNote </h1>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <div className="form-content">
+        <div id="formContent" className="form-content">
           <div>
             <label className="login-form-label">
               Username or Email
@@ -96,13 +103,13 @@ function LoginForm() {
           <button className="demo-login" type="submit" onClick={(demoUser)}>Demo User</button>
         </div>
       </form>
-      <div className="switch-to-signup-div">
+      <div id="switch-to-signup" className="switch-to-signup-div">
         <p className="no-account">Don't have an account?</p>
         {/* <button className="create-account" onClick={handleClick}>Create account</button> */}
-        <NavLink className="create-account" to='/signup'>Create account</NavLink>
+        <NavLink id='formpage-create' className="create-account" to='/signup'>Create account</NavLink>
       </div>
     </div>
   );
 }
 
-export default LoginForm;
+export default LoginFormPage;

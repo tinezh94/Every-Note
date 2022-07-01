@@ -35,7 +35,7 @@ const AddNeNoteForm = ({hideForm}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
-        if (validationErrors.length > 0) alert('Cannot Add Note');
+        // if (validationErrors.length > 0) alert('Cannot Add Note');
 
         const payload = {
             title,
