@@ -74,7 +74,7 @@ const AddNeNoteForm = ({hideForm}) => {
                     onChange={e => setTitle(e.target.value)}
                 />
                 <textarea
-                    placeholder='Note...'
+                    placeholder="Starting writing here..."
                     value={content}
                     onChange={e => setContent(e.target.value)}>
 

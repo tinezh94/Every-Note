@@ -4,10 +4,16 @@ import { useParams, useHistory } from 'react-router-dom';
 // import { Modal } from '../../context/Modal';
 import { deleteNotebookThunk, getNotebooksThunk } from '../../store/notebooks';
 import EditNotebookModal from '../EditNotebookModal';
+import SideNavBar from '../SideNavBar';
+import './NotebooksPage.css';
+
+
 
 const NotebookForm = () => {
     const { notebookId } = useParams();
     const [ notebooks, setNotebooks ] = useState([]);
+    const [ showActions, setShowActions ] = useState(false);
+
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -41,16 +47,48 @@ const NotebookForm = () => {
     //     }
     // }, [notebooksSelector]);
 
+
 return (
     <>
-      {notebooksSelector && notebooksArr.map(notebook => (
-          <div key={notebook.id}>
-            <p>Notebook Id: {notebook?.id}</p>
-            <p>Notebook Name: {notebook?.name}</p>
-            <EditNotebookModal notebook={notebook} />
-            <button onClick={(e) => onDelete(e, notebook.id)}>Delete Notebook</button>
+        <div className='notebooks-page-container'>
+             <SideNavBar />
+            <div>
+            <h1 className='page-title'>Notebooks</h1>
+                <table>
+                {notebooksSelector && notebooksArr.map(notebook => (
+                    <div key={notebook.id}>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created By</th>
+                            <th>Created At</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{notebook.name}</td>
+                            <td>{sessionUser.username}</td>
+                            <td>{notebook.createdAt}</td>
+                            {/* <td onClick={() => setShowActions(!showActions)}>Actions</td> */}
+                            {/* {showActions && (
+                                <> */}
+                            <td><EditNotebookModal notebook={notebook} /></td>
+                            <td>
+                                <button onClick={(e) => onDelete(e, notebook.id)}>Delete Notebook</button>
+                            </td>
+                                {/* </>
+                            )} */}
+                        </tr>
+                    </tbody>
+                    </div>
+                ))}
+            </table>
+
+                        {/* <p>Notebook Id: {notebook?.id}</p>
+                        <p>Notebook Name: {notebook?.name}</p> */}
+            </div>
         </div>
-      ))}
     </>
     )
 }

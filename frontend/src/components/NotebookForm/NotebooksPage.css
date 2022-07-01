@@ -1,0 +1,33 @@
+.notebooks-page-container {
+    display: flex;
+}
+
+.page-title {
+    font-size: 22px;
+    color: black;
+    line-height: 16px;
+    font-weight: 400;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
+    color: #333;
+    padding-bottom: 30px;
+}
+
+/* table td {
+    border-top: 1.5px solid black;
+    width: 100%;
+} */
+
+tr th {
+    background-color: #B3B3B3;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    ;
+}
+
+td {
+    width: 300px;
+}

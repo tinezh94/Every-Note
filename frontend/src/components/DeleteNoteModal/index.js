@@ -7,7 +7,9 @@ const DeleteNoteModal = ({ note }) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Delete Note</button>
+            <div className='delete-note-btn-div'>
+                <button className='delete-note-btn' onClick={() => setShowModal(true)}>Delete Note</button>
+            </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <DeleteNote note={note} hideForm={() => setShowModal(false)} />

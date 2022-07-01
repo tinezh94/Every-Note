@@ -7,7 +7,9 @@ const EditNoteModal = ({ note }) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Edit Note</button>
+        <div className='edit-note-btn-div'>
+            <button className='edit-note-btn' onClick={() => setShowModal(true)}>Edit Note</button>
+        </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditNoteForm note={note} hideForm={() => setShowModal(false)} />

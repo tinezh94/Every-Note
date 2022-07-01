@@ -8,6 +8,9 @@ import AddNewNoteModal from '../AddNewNoteModal';
 import EditNoteModal from '../EditNoteModal';
 import DeleteNoteModal from '../DeleteNoteModal';
 import { getNotebookNotesThunk } from '../../store/notes';
+import SideNavBar from '../SideNavBar';
+// import './NotebookDetail.css';
+import '../NotesPage/NotesPage.css';
 
 const NotebobookDetailPage = ( { sessionUser }) => {
     const dispatch = useDispatch();
@@ -45,24 +48,32 @@ const NotebobookDetailPage = ( { sessionUser }) => {
 
 
 
-        return (
-            <>
-            <AddNewNoteModal />
-
-          {notebook && notesArr && (
-              <div>
-                <h1>{notebook.name}</h1>
-                {notesArr && notesArr.map(note => (
+    return (
+        <>
+            <div className='notebook-detail-page-container'>
+                <SideNavBar />
+                <div className='notes-container'>
+                    <AddNewNoteModal />
                     <div>
-                        <h4 key={note.title}>{note.title}</h4>
-                        <p key={note.content}>{note.content}</p>
-                        <EditNoteModal note={note} />
-                        <DeleteNoteModal note={note} />
+                        {notebook && notesArr && (
+                            <div>
+                                <h1 className='notebook-name-h1'>{notebook.name}</h1>
+                                {notesArr && notesArr.map(note => (
+                                    <div className='notebook-notes-container'>
+                                        <div className='one-note-container'>
+                                            <h4 className='one-note-title' key={note.title}>{note.title}</h4>
+                                            <p className='one-note-content' key={note.content}>{note.content}</p>
+                                            <EditNoteModal note={note} />
+                                            <DeleteNoteModal note={note} />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            )}
                     </div>
-                ))}
+                </div>
             </div>
-            )}
-        </>
+         </>
     )
                 // }
 }
