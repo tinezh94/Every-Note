@@ -62,11 +62,9 @@ export const getNotebooksThunk = (userId) => async (dispatch) => {
 
 export const getOneNotebookThunk = (notebookId) => async (dispatch) => {
     const res = await csrfFetch(`/api/notebooks/notebook/${notebookId}`);
-    console.log("IN THUNK GET BOOKS", notebookId)
 
     if (res.ok) {
         const data= await res.json();
-        console.log("IF RES.OK", data)
         dispatch(getOneNotebook(data));
         return data;
     }
@@ -82,7 +80,7 @@ export const getOneNotebookThunk = (notebookId) => async (dispatch) => {
 // };
 
 export const createNotebookThunk = (newNotebook) => async (dispatch) => {
-    console.log("IN CREATENOTEBOOK THUNK", newNotebook)
+
     const res = await csrfFetch('/api/notebooks', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -92,7 +90,7 @@ export const createNotebookThunk = (newNotebook) => async (dispatch) => {
     if (res.ok) {
 
         const data = await res.json();
-        console.log("if RES.OK", data)
+
         dispatch(createNotebook(data));
         return data;
     }
@@ -107,21 +105,21 @@ export const updateNotebookThunk = (notebook) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        console.log(data)
+
         dispatch(updateNotebook(data));
         return data;
     }
 }
 
 export const deleteNotebookThunk = (notebookId) => async (dispatch) => {
-    console.log('IN THUNK DELETE', notebookId)
+
     const res = await csrfFetch(`/api/notebooks/${notebookId}`, {
         method: "DELETE"
     });
-    console.log('IN THUNK AFTER FETCH', res)
+
     if (res.ok) {
         const data = await res.json();
-        console.log('RES.OK', data)
+
         dispatch(deleteNotebook(data));
     }
 }
@@ -134,7 +132,6 @@ const notebooksReducer = (state= initialState, action) => {
 
     switch (action.type) {
         case GET_NOTEBOOKS:
-            console.log("INSIDE GET NOTEBOOKS REDUCER", action, action.notebooks)
             newState = {};
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
@@ -145,7 +142,6 @@ const notebooksReducer = (state= initialState, action) => {
             });
             return newState;
         case GET_NOTEBOOK:
-            console.log("inside GET ONE NOTEBOOK REDUCER", action, action.notebook)
             // newState = {};
             newState[action.notebookId] = action.notebook;
             return newState;
@@ -156,7 +152,6 @@ const notebooksReducer = (state= initialState, action) => {
         //     });
         //     return newState;
         case CREATE_NOTEBOOK:
-            console.log('IN REDUCER', action, action.notebook)
             newState = { ...state };
             newState[action.notebook.id] = action.notebook;
             return newState;
@@ -165,7 +160,6 @@ const notebooksReducer = (state= initialState, action) => {
             newState[action.notebook.id] = action.notebook;
             return newState;
         case DELETE_NOTEBOOK:
-            console.log('IN REDUCER', action, action.notebookId)
             newState = { ...state };
             delete newState[action.notebookId];
             return newState;

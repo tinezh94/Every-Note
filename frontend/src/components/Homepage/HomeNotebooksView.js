@@ -3,7 +3,7 @@ import './Homepage.css'
 
 const HomeNotebooksView = ({ notebooks }) => {
     const notebooksArr = Object.values(notebooks);
-    console.log(notebooksArr)
+
     return (
         <>
             <div>

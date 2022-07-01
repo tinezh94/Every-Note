@@ -15,7 +15,6 @@ import './NotebookDetail.css';
 const NotebobookDetailPage = ( { sessionUser }) => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    console.log("THIS IS NOTEBOOK ID", id)
 
     // const currentSessionId = sessionUser.id;
     // console.log(notebook)
@@ -23,9 +22,9 @@ const NotebobookDetailPage = ( { sessionUser }) => {
     const [ readNote, setReadNote ] = useState(true);
 
     const allNotebooks = useSelector(state => state.notebooks);
-    console.log("THIS IS ALL NOTEBOOKS", allNotebooks)
+
     const notebook = allNotebooks[id];
-    console.log("This is notebook", notebook)
+
 
     const notes = useSelector(state => state.notes);
     const notesArr = Object.values(notes);
@@ -36,14 +35,6 @@ const NotebobookDetailPage = ( { sessionUser }) => {
         dispatch(getNotebookNotesThunk(id));
     }, [dispatch]);
 
-
-
-    // dispatch(getNotebookNotesThunk(id));
-    console.log(notebook)
-    // setLoaded(true);
-    // let notes = Object.values(notebook)
-    // console.log(notes)
-    // if (loaded) {
 
 
 

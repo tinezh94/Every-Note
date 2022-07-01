@@ -14,7 +14,6 @@ const SideNavBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => state.notebooks);
     const notebooksArr = Object.values(notebooks);
-    console.log(notebooksArr.length)
 
     const [ showNotebooksCon, setShowNotebooksCon ] = useState(false);
     const [ showModal, setShowModal ] = useState(false);

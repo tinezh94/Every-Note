@@ -40,16 +40,16 @@ const validationNote = [
 
 // Post note
 router.post('/', validationNote, asyncHandler(async (req, res) => {
-    console.log(req.body)
+
     const { title, content, userId, notebookId } = req.body;
-    console.log('This is req.body', req.body)
+
     const newNote = await db.Note.create({
         title: title,
         content: content,
         userId: userId,
         notebookId: notebookId
     });
-    console.log(newNote)
+
     const notes = await db.Note.findAll({
         where: {
             userId,
@@ -64,12 +64,11 @@ router.post('/', validationNote, asyncHandler(async (req, res) => {
 //Update note
 router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     const noteId = req.params.id;
-    console.log("IN BACKEND ROUTE", noteId)
+
     const { title, content, userId, notebookId } = req.body;
 
-    console.log("THIS IS BACKEND ROUTE", req.body)
     const note = await db.Note.findByPk(noteId);
-    console.log("This is the note", note)
+
     const newNote = await note.update({
         title: title,
         content: content,
@@ -77,7 +76,6 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
         notebookId: notebookId
     });
 
-    console.log("IN BACKEND ROUTE THIS IS NEW NOTE", newNote)
 
     res.json(newNote);
 }));
@@ -85,11 +83,11 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
 router.delete('/note/:id(\\d+)', asyncHandler(async (req, res) => {
     const noteId = req.params.id;
 
-    console.log('BACKEND DELETE ROUTE, NOTE ID', noteId);
+
     const note = await db.Note.findByPk(noteId);
-    console.log("THIS IS NOTE TO DELETE", note)
+
     await note.destroy();
-    console.log('NOTE IS DESTRYOYED')
+
     res.json(noteId);
 }));
 

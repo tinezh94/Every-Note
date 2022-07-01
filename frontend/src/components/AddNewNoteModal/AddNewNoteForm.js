@@ -11,7 +11,7 @@ const AddNeNoteForm = ({hideForm}) => {
 
     const sessionUser = useSelector(state => state.session.user);
     const notesSelector = useSelector(state => state.notes);
-    console.log(notesSelector)
+
     const notesArr = Object.values(notesSelector)
 
     const [ title, setTitle ] = useState('');
@@ -43,7 +43,7 @@ const AddNeNoteForm = ({hideForm}) => {
             userId: sessionUser.id,
             notebookId: id || 1
         }
-        console.log("THIS IS PAY LOAD", payload)
+
         let createdNote = await dispatch(createNoteThunk(payload));
         // await dispatch(getNotebookNotesThunk(id));
         if (createdNote) reset();

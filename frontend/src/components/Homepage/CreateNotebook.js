@@ -36,7 +36,7 @@ const CreateNotebook = () => {
         }
 
         let createdNotebook = await dispatch(createNotebookThunk(payload));
-        console.log("This IS CREATED NOTEBOOK", createdNotebook)
+
         //****** NEEDS DEBUGGGGGGGGG*!!!!!!!!!!!!!!!********* */
         if (createdNotebook) reset();
         setHasSubmitted(false);

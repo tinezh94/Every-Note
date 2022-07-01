@@ -15,8 +15,6 @@ const EditNotebook = ({ notebook, hideForm }) => {
     const sessionUser = useSelector(state => state.session.user);
     const allNotebooks = useSelector(state => state.notebooks);
 
-    console.log(notebook)
-
 
     useEffect(() => {
         dispatch(getNotebooksThunk(sessionUser.id));
@@ -39,9 +37,9 @@ const EditNotebook = ({ notebook, hideForm }) => {
             name: editName,
             userId: sessionUser.id,
         }
-        console.log(payload)
+
         let editedNotebook = await dispatch(updateNotebookThunk(payload));
-        console.log(editedNotebook)
+
         setHasSubmitted(false);
         hideForm();
         history.push(`/notebooks/notebook/${editedNotebook.id}`);

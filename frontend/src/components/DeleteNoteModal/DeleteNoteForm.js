@@ -17,7 +17,7 @@ const DeleteNote = ({ note, hideForm }) => {
 
     const onDelete = async (e, noteId) => {
         e.preventDefault();
-        console.log("This is deleted note:", note, noteId);
+
         await dispatch(deleteNoteThunk(noteId));
         hideForm();
         // history.push(`/notebooks/notebook/${id}`);
