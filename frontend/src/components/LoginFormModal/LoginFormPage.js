@@ -3,7 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css';
 import SignupFormModal from "../SignupFormModal";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import background from '../../context/backgroundImage.png'
 
 function LoginFormPage() {
@@ -15,7 +15,7 @@ function LoginFormPage() {
 
   const demoUser = async () => {
     dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}));
-    history.push('home');
+    history.push('/');
   };
 
   const handleSubmit = (e) => {

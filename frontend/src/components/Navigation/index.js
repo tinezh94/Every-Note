@@ -35,7 +35,7 @@ function Navigation({ isLoaded }){
       <div className='nav-bar-home-container'>
           <ul className='nav-buttons-div'>
             <li className='nav-buttons'>
-              <NavLink className={'nav-home'} exact to="/home">Home</NavLink>
+              {/* <NavLink className={'nav-home'} exact to="/home">Home</NavLink> */}
             </li>
           </ul>
       </div>

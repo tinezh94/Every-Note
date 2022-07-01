@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import SignupForm from "../SignupFormModal/SignupForm";
 import Footer from "./footer";
 import './SplashPage.css';
 
@@ -13,7 +14,7 @@ const SplashPage = () => {
             {/* <SignupFormModal /> */}
             <button className="splash-page-signup-button" href="/signup">
               <NavLink className={"signup-button-primary"} to="/signup">Sign Up For Free</NavLink>
-              </button>
+            </button>
           </div>
           <div className="splash-page-body-content">
             <img className="splash-page-image" src="https://evernote.com/c/assets/homepage-repackaging/task_hero_image@2x__en.png?b5afe30ef59efef5" alt="laptop" />

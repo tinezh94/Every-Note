@@ -26,7 +26,7 @@ const SideNavBar = () => {
     const logout = (e) => {
         e.preventDefault();
         dispatch(SessionActions.logout());
-       history.push('/');
+        history.push('/');
     };
 
     return (
