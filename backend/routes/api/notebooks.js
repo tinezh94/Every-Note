@@ -5,6 +5,7 @@ const db = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 router.use((req, res, next) => {
@@ -50,9 +51,19 @@ router.get('/notebook/:id', asyncHandler(async (req, res) => {
     return res.json(notebook)
 }));
 
+const validateName = [
+    check('name')
+    .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Notebook name cannot be empty')
+        .isLength({max: 50})
+        .withMessage('Notebook name cannot be longer than 50 characters'),
+        handleValidationErrors
+];
+
 
 //Create notebook
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', validateName, asyncHandler(async (req, res) => {
     // const userId = req.params.id;
 
     const { name, userId } = req.body;
@@ -67,7 +78,7 @@ router.post('/', asyncHandler(async (req, res) => {
 }))
 
 //Update notebook
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', validateName, asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
     const { name } = req.body;
     const notebook = await db.Notebook.findByPk(notebookId);

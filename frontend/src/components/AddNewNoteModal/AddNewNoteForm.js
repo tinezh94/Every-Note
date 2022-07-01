@@ -24,6 +24,7 @@ const AddNeNoteForm = ({hideForm}) => {
         const errors =[];
 
         if (notesArr.map(note => note.title).includes(title)) errors.push("Note title must be unique");
+        if (!title) errors.push("Note title cannot be empty");
         setValidationErrors(errors);
     },[title]);
 
