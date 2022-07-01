@@ -1,7 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .notes-page-container {
     display: flex;
-    margin: 0 0;
-    width: 100;
+    min-height: 100vh;
+    /* width: 990px; */
+    margin: 0 auto;
 }
 
 .notes-container {
@@ -35,39 +41,25 @@
     border-radius: 5px;
     box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
     overflow-x: auto;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     background-color: white;
     border: solid transparent 1px;
-    margin-left: 10px;
-}
-
-.notebook-notes-container {
-    display: flex;
-    width: 62em;
-    height: 24em;
-    border-radius: 5px;
-    box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    background-color: white;
-    border: solid transparent 1px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    display: flex;
+    margin-left: 17px;
 }
 
 .one-note-container {
     border: solid 0.5px lightgrey;
     box-shadow: rgb(0, 0, 0, 0.3) 1px 2px 6px;
-    height: 35em;
+    height: 31em;
     margin: 5px;
     margin-top: 25px;
     width: 35em;
     border-radius: 5px;
     text-decoration: none;
     color: black;
-    display: grid;
-    grid-area: auto;
+    /* display: grid;
+    grid-area: auto; */
+    position: relative;
 }
 
 
@@ -80,7 +72,7 @@
     text-align: left;
     padding-left: 20px;
     padding-bottom: 0;
-    /* padding-top: 20px; */
+    padding-top: 20px;
     color: #333;
     padding-bottom: 10px;
     text-decoration: underline;
@@ -88,7 +80,7 @@
 
 .one-note-content {
     width: 15rem;
-    height: 100%;
+    height: 90%;
     word-wrap: break-word;
     padding: 3px;
     padding-left: 8px;
@@ -96,10 +88,10 @@
     overflow: hidden;
 }
 
-.edit-note-btn-div {
+/* .edit-note-btn-div {
     padding-top: 100px;
     margin-top: 250px;
-}
+} */
 
 
 
@@ -113,6 +105,9 @@
     text-align: center;
     color: white;
     border-radius: 3px;
+    position: sticky;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .edit-note-btn:hover,

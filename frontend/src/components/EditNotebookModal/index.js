@@ -8,7 +8,7 @@ const EditNotebookModal = ({ notebook }) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Rename Notebook</button>
+            <button className='rename-notebook' onClick={() => setShowModal(true)}>Rename</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditNotebook notebook={notebook} hideForm={() => setShowModal(false)} />

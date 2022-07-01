@@ -9,8 +9,8 @@ import EditNoteModal from '../EditNoteModal';
 import DeleteNoteModal from '../DeleteNoteModal';
 import { getNotebookNotesThunk } from '../../store/notes';
 import SideNavBar from '../SideNavBar';
-// import './NotebookDetail.css';
-import '../NotesPage/NotesPage.css';
+import './NotebookDetail.css';
+// import '../NotesPage/NotesPage.css';
 
 const NotebobookDetailPage = ( { sessionUser }) => {
     const dispatch = useDispatch();
@@ -53,24 +53,24 @@ const NotebobookDetailPage = ( { sessionUser }) => {
             <div className='notebook-detail-page-container'>
                 <SideNavBar />
                 <div className='notes-container'>
-                    <AddNewNoteModal />
-                    <div>
+                        <h1 className='notebook-name-h1'>{notebook.name}</h1>
+                        <AddNewNoteModal />
                         {notebook && notesArr && (
-                            <div>
-                                <h1 className='notebook-name-h1'>{notebook.name}</h1>
+                            <div id='allNotesContainer'>
                                 {notesArr && notesArr.map(note => (
-                                    <div className='notebook-notes-container'>
-                                        <div className='one-note-container'>
-                                            <h4 className='one-note-title' key={note.title}>{note.title}</h4>
-                                            <p className='one-note-content' key={note.content}>{note.content}</p>
+
+                                        <div className='single-note-container'>
+                                            <h4 className='single-note-title' key={note.title}>{note.title}</h4>
+                                            <div className='single-note-content-div'>
+                                                <span id='single-note-content' key={note.content}>{note.content}</span>
+                                            </div>
                                             <EditNoteModal note={note} />
                                             <DeleteNoteModal note={note} />
                                         </div>
-                                    </div>
+
                                 ))}
                             </div>
                             )}
-                    </div>
                 </div>
             </div>
          </>

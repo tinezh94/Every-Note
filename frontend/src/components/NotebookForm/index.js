@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 // import { Modal } from '../../context/Modal';
 import { deleteNotebookThunk, getNotebooksThunk } from '../../store/notebooks';
 import EditNotebookModal from '../EditNotebookModal';
@@ -47,6 +47,20 @@ const NotebookForm = () => {
     //     }
     // }, [notebooksSelector]);
 
+    let notebook;
+    notebook = notebooksSelector && notebooksArr.map(notebook => (
+        <li key={notebook.id}>
+            <div>
+                <Link id='link' to={`/notebooks/notebook/${notebook.id}`}>{notebook.name}</Link>
+            </div>
+            <div className='sub-header-by'>{sessionUser.username}</div>
+            <div className='sub-header-created'>{notebook.createdAt}</div>
+            <div id="notebook-actions-btns" className='sub-header-actions'>
+                <EditNotebookModal notebook={notebook} />
+                <button className='delete-notebook' onClick={(e) => onDelete(e, notebook.id)}>Delete</button>
+            </div>
+        </li>
+    ))
 
 return (
     <>
@@ -54,41 +68,33 @@ return (
              <SideNavBar />
             <div>
             <h1 className='page-title'>Notebooks</h1>
-                <table>
-                {notebooksSelector && notebooksArr.map(notebook => (
-                    <div key={notebook.id}>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Created By</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{notebook.name}</td>
-                            <td>{sessionUser.username}</td>
-                            <td>{notebook.createdAt}</td>
-                            {/* <td onClick={() => setShowActions(!showActions)}>Actions</td> */}
-                            {/* {showActions && (
-                                <> */}
-                            <td><EditNotebookModal notebook={notebook} /></td>
-                            <td>
-                                <button onClick={(e) => onDelete(e, notebook.id)}>Delete Notebook</button>
-                            </td>
-                                {/* </>
-                            )} */}
-                        </tr>
-                    </tbody>
-                    </div>
-                ))}
-            </table>
+                 {/* {notebook = notebooksSelector && notebooksArr.map(notebook => (
+                    <li key={notebook.id}>
+                        <div>
+                            <Link to={`/notebooks/notebook/${notebook.id}`}>{notebook.name}</Link>
+                        </div>
+                        <div>{sessionUser.username}</div>
+                        <div>{notebook.createdAt}</div>
+                        <div>
+                            <EditNotebookModal notebook={notebook} />
+                            <button onClick={(e) => onDelete(e, notebook.id)}>Delete Notebook</button>
+                        </div>
+                    </li>
+                ))} */}
 
-                        {/* <p>Notebook Id: {notebook?.id}</p>
-                        <p>Notebook Name: {notebook?.name}</p> */}
+                <div className='notebooks-container'>
+                    <ul className='notebooks-header'>
+                        <li className=''sub-headers>
+                            <div className='sub-header-title'>TITLE</div>
+                            <div className='sub-header-by'>CREATED BY</div>
+                            <div className='sub-header-created'>CREATED AT</div>
+                            <div className='sub-header-actions'>ACTIONS</div>
+                        </li>
+                            {notebook}
+                    </ul>
+                </div>
             </div>
-        </div>
+    </div>
     </>
     )
 }

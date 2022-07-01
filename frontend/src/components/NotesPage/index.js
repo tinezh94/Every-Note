@@ -6,7 +6,7 @@ import AddNewNoteModal from "../AddNewNoteModal";
 import EditNoteModal from '../EditNoteModal';
 import DeleteNoteModal from '../DeleteNoteModal';
 import SideNavBar from "../SideNavBar";
-import './NotesPage.css'
+import './NotesPage.css';
 
 const NotesListingPage = () => {
     const dispatch = useDispatch();

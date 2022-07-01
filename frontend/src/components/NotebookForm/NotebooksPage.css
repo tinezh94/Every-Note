@@ -1,5 +1,9 @@
 .notebooks-page-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    height: 100vh;
+    max-width: 100vw;
+    background-color: #262626;
 }
 
 .page-title {
@@ -13,21 +17,99 @@
     padding-top: 20px;
     color: #333;
     padding-bottom: 30px;
+    color: white;
 }
 
-/* table td {
-    border-top: 1.5px solid black;
-    width: 100%;
-} */
+.notebookss-container {
+    display: flex;
+    min-height: 100vh;
+}
 
-tr th {
-    background-color: #B3B3B3;
-    text-transform: uppercase;
+.notebooks-header {
+    /* display: flex; */
     font-size: 11px;
-    font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    ;
+    border-top: 2px solid #737373;
+    width: 92em;
+    padding-left: 10px;
 }
 
-td {
-    width: 300px;
+.notebooks-header li {
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.notebooks-header li:nth-child(odd) {
+    background-color: 1a1a1a;
+    opacity: 0.8;
+}
+
+.notebooks-header li:first-child {
+    color: #b3b3b3;
+}
+
+.notebooks-header li .sub-header-title {
+    width: 55%;
+    color: white;
+}
+
+
+
+.notebooks-header li .sub-header-by {
+    width: 18%;
+    color: white;
+}
+
+.notebooks-header li .sub-header-created {
+    width: 25%;
+    color: white;
+}
+
+.notebooks-header li .sub-header-actions {
+    width: 18%;
+    color: white;
+}
+
+a#link {
+    display: flex;
+    width: 490px;
+    text-decoration: none;
+    color: white;
+}
+
+a#link:hover {
+    text-transform: uppercase;
+    color: #00a82d;
+}
+
+a#link:visited {
+    color: white;
+}
+
+#notebook-actions-btns {
+    display: flex;
+}
+
+.rename-notebook,
+.delete-notebook {
+    border: none;
+    background-color: #00a82d;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.rename-notebook:hover,
+.delete-notebook:hover {
+    text-transform: uppercase;
+}
+
+.delete-notebook {
+    margin-left: 10px;
+    padding: 8px;
 }

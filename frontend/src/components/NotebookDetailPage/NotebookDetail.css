@@ -1,6 +1,37 @@
-/* .notebook-detail-page-container {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.notebook-detail-page-container {
     display: flex;
+    min-height: 100vh;
+    /* width: 990px; */
+    margin: 0 auto;
+}
+
+#allNotesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 62em;
+    height: 38em;
+    border-radius: 5px;
+    box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: white;
+    border: solid transparent 1px;
+    margin-left: 10px;
+}
+
+.notes-container {
     width: 100%;
+    display: flex;
+}
+
+.notebook-notes-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .notebook-name-h1 {
@@ -9,15 +40,16 @@
     font-size: 24px;
     font-weight: 400;
     padding-left: 20px;
-    ;
+    padding-top: 20px;
+    color: white;
 }
 
 .note-detail-container {
     display: flex;
     /* flex-direction: column; */
-/* }
+}
 
-.noteook-notes-container {
+/* .noteook-notes-container {
     display: flex;
     width: 50em;
     height: 36em;
@@ -53,10 +85,10 @@
     text-align: left;
     padding-left: 20px;
     padding-bottom: 0;
-    /* padding-top: 20px; */
-/* color: #333;
-padding-bottom: 10px;
-text-decoration: underline;
+    padding-top: 20px;
+    color: #333;
+    padding-bottom: 10px;
+    text-decoration: underline;
 }
 
 .note-item-content {
@@ -68,3 +100,38 @@ text-decoration: underline;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     overflow: hidden;
 } */
+
+
+.single-note-container {
+    margin-left: 16px;
+    margin-top: 20px;
+    width: 60em;
+    border: solid 0.5px lightgrey;
+    height: 500px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.single-note-title {
+    font-size: 22px;
+    color: black;
+    line-height: 16px;
+    font-weight: 400;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 0;
+    padding-top: 20px;
+    color: #333;
+    padding-bottom: 10px;
+    text-decoration: underline;
+}
+
+.single-note-content-div {
+    height: 350px;
+
+}
+
+span#single-note-content {
+    padding: 15px;
+}
