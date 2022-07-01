@@ -3,17 +3,19 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css';
 import SignupFormModal from "../SignupFormModal";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import background from '../../context/backgroundImage.png'
 
 function LoginFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   const demoUser = async () => {
-    return dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}));
+    dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}));
+    history.push('home');
   };
 
   const handleSubmit = (e) => {
