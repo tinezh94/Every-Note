@@ -149,3 +149,82 @@
 }
 
 /* Create Notebook Form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-notebook-label {
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.create-notebook-input {
+    margin-bottom: 20px;
+    line-height: 1.75;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+.create-notebook-btn-div {
+    display: flex;
+    justify-content: center;
+}
+
+.create-notebook-btn {
+    border: none;
+    background-color: #00a82d;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.create-notebook-btn:hover {
+    background-color: #027921;
+}
+
+/* Edit Notebook Form */
+.edit-notebook-label {
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-notebook-input {
+    margin-bottom: 20px;
+    line-height: 1.75;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+.edit-notebook-actions-div {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-notebook-btn,
+.cancel-notebook-btn {
+    border: none;
+    background-color: #00a82d;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-notebook-btn:hover,
+.cancel-notebook-btn:hover {
+    background-color: #027921;
+}
+
+.cancel-notebook-btn {
+    margin-top: 5px;
+}

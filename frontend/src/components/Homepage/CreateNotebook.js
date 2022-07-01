@@ -57,13 +57,16 @@ const CreateNotebook = () => {
                         ))}
                     </ul>
                     )}
-                <label>Name</label>
+                <label className='create-notebook-label'>Name</label>
                 <input
+                className='create-notebook-input'
                 type='text'
                 value={name}
                 onChange={newName}
                 />
-                <button type="submit">Create Notebook</button>
+                <div className='create-notebook-btn-div'>
+                    <button className='create-notebook-btn' type="submit">Create Notebook</button>
+                </div>
             </form>
         </>
     )

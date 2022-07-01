@@ -21,8 +21,8 @@ const NotesListingPage = () => {
     const notesArr = Object.values(notesSelector);
 
     useEffect(() => {
-        dispatch(getNotesThunk(sessionUser.id));
-    }, [dispatch, sessionUser.id]);
+        dispatch(getNotesThunk(sessionUser?.id));
+    }, [dispatch]);
 
     useEffect(() => {
         setNotes(notesSelector);

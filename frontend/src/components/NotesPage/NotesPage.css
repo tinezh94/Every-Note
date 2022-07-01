@@ -126,3 +126,83 @@
     color: white;
     border-radius: 3px;
 }
+
+/* edit note */
+
+.edit-note-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 1.75;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+.edit-note-text {
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.edit-note-actions-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update-note-btn,
+.cancel-edit-note-btn {
+    border: none;
+    background-color: #00a82d;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.update-note-btn:hover,
+.cancel-edit-note-btn:hover {
+    background-color: #027921;
+}
+
+.cancel-edit-note-btn {
+    margin-top: 8px;
+}
+
+/* Delete note */
+.delete-note-h3 {
+    font-weight: 450;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-left: 8px;
+}
+
+.confirm-delete {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 8px;
+}
+
+.delete-note-actions-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.cancel-delete-btn,
+.confirm-delete-note-btn {
+    border: none;
+    background-color: #00a82d;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.cancel-delete-btn:hover,
+.confirm-delete-note-btn:hover {
+    background-color: #027921;
+}

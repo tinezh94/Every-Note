@@ -39,7 +39,7 @@ function App() {
           <Route exact path="/">
             <Navigation isLoaded={isLoaded}/>
             <SplashPage />
-            {sessionUser ? <Redirect exact to='/home' /> : history.push('/') }
+            {/* {sessionUser ? <Redirect exact to='/home' /> : history.push('/') } */}
           </Route>
           <Route exact path="/home">
               <Homepage />

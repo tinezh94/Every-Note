@@ -18,8 +18,6 @@ const EditNoteForm = ({ note, hideForm }) => {
     const notesSelector = useSelector(state => state.notes);
     const notesArr = Object.values(notesSelector);
 
-    console.log(note)
-
     useEffect(() => {
         if (!id) dispatch(getNotesThunk(sessionUser.id))
         else dispatch(getNotebookNotesThunk(id))
@@ -76,18 +74,24 @@ const EditNoteForm = ({ note, hideForm }) => {
                     </ul>
                 )} */}
                 <input
+                    className='edit-note-title'
                     type='text'
                     value={editTitle}
                     onChange={e => setEditTitle(e.target.value)}
                 />
                 <textarea
-                    placeholder='Note...'
+                    className='edit-note-text'
+                    placeholder='Start writing here...'
+                    cols="50"
+                    rows="10"
                     value={editContent}
                     onChange={handleChange}>
 
                 </textarea>
-                <button onClick={editSubmit} type="submit">Update</button>
-                <button type="button" onClick={editCancel}>Cancel</button>
+                <div className='edit-note-actions-div'>
+                    <button className='update-note-btn'  onClick={editSubmit} type="submit">Update</button>
+                    <button className='cancel-edit-note-btn' type="button" onClick={editCancel}>Cancel</button>
+                </div>
             </form>
         </>
     )

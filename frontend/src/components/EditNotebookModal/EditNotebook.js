@@ -63,14 +63,17 @@ const EditNotebook = ({ notebook, hideForm }) => {
                         ))}
                     </ul>
                     )}
-                <label>Name</label>
+                <label className='edit-notebook-label'>Name</label>
                 <input
+                className='edit-notebook-input'
                 type='text'
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
                 />
-                <button type="submit">Continue</button>
-                <button type="button" onClick={editNotebookCancel}>Cancel</button>
+                <div className='edit-notebook-actions-div'>
+                    <button className='edit-notebook-btn' type="submit">Continue</button>
+                    <button className='cancel-notebook-btn' type="button" onClick={editNotebookCancel}>Cancel</button>
+                </div>
             </form>
         </>
     )

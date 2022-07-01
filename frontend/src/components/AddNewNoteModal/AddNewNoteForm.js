@@ -69,17 +69,24 @@ const AddNeNoteForm = ({hideForm}) => {
                     </ul>
                 )}
                 <input
+                    className='add-new-note-title'
+                    placeholder='Title...'
                     type='text'
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
                 <textarea
+                    className='add-new-note-text'
                     placeholder="Starting writing here..."
+                    rows="10"
+                    cols="50"
                     value={content}
                     onChange={e => setContent(e.target.value)}>
 
                 </textarea>
-                <button type="submit">Save Note</button>
+                <div className='save-new-note-div'>
+                    <button className='save-new-note' type="submit">Save Note</button>
+                </div>
             </form>
         </>
     )

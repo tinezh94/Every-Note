@@ -32,7 +32,7 @@ function Homepage() {
             <SideNavBar />
             <div className='homepaga-main-container'>
                 <div className='homepage-title-container'>
-                    <h1 className='welcome'>Welcome {sessionUser.username} !</h1>
+                    <h1 className='welcome'>Welcome {sessionUser?.username} !</h1>
                 </div>
 
                 <div className='home-note-notebook-container'>

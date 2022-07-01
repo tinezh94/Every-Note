@@ -20,8 +20,8 @@ const SideNavBar = () => {
     const [ showModal, setShowModal ] = useState(false);
 
     useEffect(() => {
-        dispatch(getNotebooksThunk(sessionUser.id));
-    }, [dispatch, sessionUser.id]);
+        dispatch(getNotebooksThunk(sessionUser?.id));
+    }, [dispatch]);
 
 
     const logout = (e) => {
@@ -35,7 +35,7 @@ const SideNavBar = () => {
             <div className="sideNavBar-container">
                 <div className="username">
                     <i className="fa-solid fa-user-check"></i>
-                    {sessionUser.username}
+                    {sessionUser?.username}
                 </div>
 
                 <div>
@@ -66,7 +66,7 @@ const SideNavBar = () => {
                 <div>
                     <h3>
                         <NavLink className={'notes-btn'} to='/notes'>
-                            <i class="fa-solid fa-note-sticky"></i>
+                            <i className="fa-solid fa-note-sticky"></i>
                             Notes
                         </NavLink>
                     </h3>

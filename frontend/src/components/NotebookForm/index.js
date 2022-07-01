@@ -26,7 +26,7 @@ const NotebookForm = () => {
     const notebooksArr = Object.values(notebooksSelector);
 
     useEffect(() => {
-        dispatch(getNotebooksThunk(sessionUser.id));
+        dispatch(getNotebooksThunk(sessionUser?.id));
     },[dispatch]);
 
     const onDelete =  async (e, notebookId) => {
@@ -84,7 +84,7 @@ return (
 
                 <div className='notebooks-container'>
                     <ul className='notebooks-header'>
-                        <li className=''sub-headers>
+                        <li className='sub-headers'>
                             <div className='sub-header-title'>TITLE</div>
                             <div className='sub-header-by'>CREATED BY</div>
                             <div className='sub-header-created'>CREATED AT</div>

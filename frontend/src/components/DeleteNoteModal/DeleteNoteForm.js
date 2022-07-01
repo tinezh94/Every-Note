@@ -30,10 +30,12 @@ const DeleteNote = ({ note, hideForm }) => {
 
     return (
         <>
-            <h3> Delete Note ?</h3>
-            <p>Delete will be permanent and cannot be undone</p>
-            <button type='button' onClick={(e) => onDelete(e, note.id)}>Delete permanently</button>
-            <button type='button' onClick={onCancel}>Cancel Delete</button>
+            <h3 className='delete-note-h3'> Delete Note ?</h3>
+            <p className='confirm-delete'>Delete will be permanent and cannot be undone!</p>
+            <div className='delete-note-actions-div'>
+                <button className='confirm-delete-note-btn' type='button' onClick={(e) => onDelete(e, note.id)}>Delete permanently</button>
+                <button className='cancel-delete-btn' type='button' onClick={onCancel}>Cancel Delete</button>
+            </div>
         </>
     )
 };
