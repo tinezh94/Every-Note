@@ -12,8 +12,10 @@ const CreateNotebook = () => {
     const newName = e => setName(e.target.value);
 
     const sessionUser = useSelector(state => state.session.user);
-    // const notebooksSelector = useSelector(state => state.notebooks);
-    // console.log(notebooksSelector)
+    const notebooksSelector = useSelector(state => state.notebooks);
+    console.log(notebooksSelector)
+    const notebooksArr = Object.values(notebooksSelector);
+    console.log(notebooksArr)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -22,6 +24,7 @@ const CreateNotebook = () => {
 
         if (name.length > 50) errors.push('Notebook name cannot be longer than 50 characters');
         if (name.length < 1) errors.push('Notebook name cannot be empty');
+        if (notebooksArr.map(notebook => notebook.name).includes(name)) errors.push('Notebook name must be unique');
         setValidationErrors(errors);
     }, [name]);
 

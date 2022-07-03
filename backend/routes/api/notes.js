@@ -37,7 +37,6 @@ const validationNote = [
     handleValidationErrors
 ];
 
-
 // Post note
 router.post('/', validationNote, asyncHandler(async (req, res) => {
 
@@ -62,7 +61,7 @@ router.post('/', validationNote, asyncHandler(async (req, res) => {
 }));
 
 //Update note
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', validationNote, asyncHandler(async (req, res) => {
     const noteId = req.params.id;
 
     const { title, content, userId, notebookId } = req.body;
