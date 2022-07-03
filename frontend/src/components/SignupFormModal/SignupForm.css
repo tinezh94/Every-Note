@@ -84,35 +84,11 @@
     text-align: center;
     text-decoration: none;
     margin-left: 185px;
+    border: none;
+    background-color: white;
 }
 
 .login-to-account:hover {
     color: #027921;
     cursor: pointer;
-}
-
-.sign-up-form {
-    background-color: white;
-    width: 480px;
-    height: 520px;
-    margin-left: 25em;
-    margin-top: 50px;
-    border-radius: 5px;
-}
-
-#switch-to-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#signup-form-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-}
-
-#form-page-signin {
-    margin-left: 10px;
 }

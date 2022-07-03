@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import SigninModal from "./SigninModal";
 import './SignupForm.css';
 
 function SignupForm() {
@@ -94,7 +95,8 @@ function SignupForm() {
       </form>
       <div className="switch-to-login-div">
         <p className="have-account">Already have an account?</p>
-        <NavLink className="login-to-account"  exact to='/login'> Sign In</NavLink>
+        <SigninModal />
+        {/* <NavLink className="login-to-account"  exact to='/login'> Sign In</NavLink> */}
       </div>
     </div>
   );

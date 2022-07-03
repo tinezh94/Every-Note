@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import './LoginForm.css';
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
+import CreateAcctModal from "./CreatAcctModal";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -98,8 +99,9 @@ function LoginForm() {
       </form>
       <div className="switch-to-signup-div">
         <p className="no-account">Don't have an account?</p>
-        {/* <button className="create-account" onClick={handleClick}>Create account</button> */}
-        <NavLink className="create-account" to='/signup'>Create account</NavLink>
+       <CreateAcctModal />
+
+        {/* <NavLink className="create-account" to='/signup'>Create account</NavLink> */}
       </div>
     </div>
   );

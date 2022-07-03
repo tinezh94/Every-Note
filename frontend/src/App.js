@@ -7,8 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 // import * as notebookActions from "./store/notebooks"
 import NotebookForm from "./components/NotebookForm";
-import LoginFormPage from "./components/LoginFormModal/LoginFormPage";
-import SignupFormPage from "./components/SignupFormModal/SignupFormPage";
+import LoginForm from "./components/LoginFormModal/LoginForm";
+// import SignupFormPage from "./components/SignupFormModal/SignupFormPage";
 // import CreateNotebook from "./components/Homepage/CreateNotebook";
 import Homepage from "./components/Homepage/Homepage";
 import SplashPage from "./components/SplashPage/SplashPage";
@@ -16,6 +16,7 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import NotebookDetailPage from './components/NotebookDetailPage';
 import NotesListingPage from "./components/NotesPage";
 import AddNewNote from "./components/AddNewNote";
+import CreateAcctModal from "./components/LoginFormModal/CreatAcctModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,12 +45,12 @@ function App() {
           <Route exact path="/home">
               <Homepage />
           </Route>
-          <Route exact path='/login'>
-            <LoginFormPage />
+          {/* <Route exact path='/login'>
+            <LoginForm />
           </Route>
           <Route exact path='/signup'>
-            <SignupFormPage />
-          </Route>
+            <CreateAcctModal />
+          </Route> */}
           <Route exact path="/notebooks">
             <NotebookForm  />
           </Route>
