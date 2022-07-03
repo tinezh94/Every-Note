@@ -21,17 +21,22 @@ const NotebobookDetailPage = ( { sessionUser }) => {
     const [ oldNote, setOldNote ] = useState('');
     const [ readNote, setReadNote ] = useState(true);
 
-    const allNotebooks = useSelector(state => state.notebooks);
+    useEffect(() => {
+        dispatch(getNotebooksThunk(sessionUser?.id));
+    },[dispatch]);
 
+    const allNotebooks = useSelector(state => state?.notebooks);
+
+    console.log("IN COMPONENT, ALL NOTEBOOKS", allNotebooks)
     const notebook = allNotebooks[id];
 
+    console.log("COMPONENT, NOTEBOOK", notebook)
 
     const notes = useSelector(state => state.notes);
     const notesArr = Object.values(notes);
     // const [ loaded, setLoaded ] = useState(false);
     useEffect(() => {
         dispatch(getOneNotebookThunk(id));
-        dispatch(getNotebooksThunk(sessionUser.id));
         dispatch(getNotebookNotesThunk(id));
     }, [dispatch]);
 
@@ -43,7 +48,7 @@ const NotebobookDetailPage = ( { sessionUser }) => {
             <div className='notebook-detail-page-container'>
                 <SideNavBar />
                 <div className='notes-container'>
-                        <h1 className='notebook-name-h1'>{notebook.name}</h1>
+                        <h1 className='notebook-name-h1'>{notebook?.name}</h1>
                         <AddNewNoteModal />
                         {notebook && notesArr && (
                             <div id='allNotesContainer'>

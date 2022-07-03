@@ -42,12 +42,14 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
 //Get notebook
 router.get('/notebook/:id', asyncHandler(async (req, res) => {
     const notebookId = req.params.id;
+    console.log("IN BACKEND ROUTE, THIS IS NOTEBOOKid", notebookId)
 
     const notebook = await db.Notebook.findByPk(notebookId,{
         include: [db.Note],
     }
         // order: ['id', 'DESC']
     );
+    console.log("IN BACKEND, THIS IS NOTEBOOK", notebook)
     return res.json(notebook)
 }));
 

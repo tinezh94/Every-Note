@@ -61,10 +61,12 @@ export const getNotebooksThunk = (userId) => async (dispatch) => {
 };
 
 export const getOneNotebookThunk = (notebookId) => async (dispatch) => {
+    console.log("NOTEBOOKT THUNK", notebookId)
     const res = await csrfFetch(`/api/notebooks/notebook/${notebookId}`);
-
+    console.log("INTHUNK AFTER FETCH, THIS IS RES", res)
     if (res.ok) {
         const data= await res.json();
+        console.log("IF RES.OK, THIS IS DATA", data)
         dispatch(getOneNotebook(data));
         return data;
     }
@@ -142,7 +144,9 @@ const notebooksReducer = (state= initialState, action) => {
             });
             return newState;
         case GET_NOTEBOOK:
-            // newState = {};
+
+        console.log("NOTEBOOKREDUCER", action, action.notebook)
+            newState = {};
             newState[action.notebookId] = action.notebook;
             return newState;
         // case GET_NOTES:

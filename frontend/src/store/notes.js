@@ -81,14 +81,18 @@ export const getOneNote = noteId => async (dispatch) => {
 };
 
 export const createNoteThunk = (newNote) => async (dispatch) => {
+
     const res= await csrfFetch('/api/notes', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(newNote)
     });
 
+
     if (res.ok) {
+
         const data = await res.json();
+
         dispatch(addNote(newNote));
         return data;
     }
