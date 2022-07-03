@@ -1,12 +1,7 @@
 
-# Create React App Template
+# EveryNote
 
-A no-frills template from which to create React + Redux applications with
-[Create React App](https://github.com/facebook/create-react-app).
-
-```sh
-npx create-react-app my-app --template @appacademy/react-redux-v17 --use-npm
-```
+EveryNote is a clone of the most popular note taking App Evernote. 
 
 ## Available Scripts
 
