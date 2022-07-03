@@ -32,9 +32,17 @@ const EditNoteForm = ({ note, hideForm }) => {
 
     };
 
+    useEffect(() => {
+        const errors =[];
+
+        if (!editTitle) errors.push("Note title cannot be empty");
+        setValidationErrors(errors);
+    },[editTitle]);
+
     const editSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
+        if (validationErrors.length > 0) alert('Cannot Edit Note');
 
         const payload = {
             id: note.id,
@@ -66,13 +74,13 @@ const EditNoteForm = ({ note, hideForm }) => {
     return (
         <>
             <form onSubmit={editSubmit}>
-                {/* {hasSubmitted && validationErrors.length > 0 && (
+                {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
                         {validationErrors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                )} */}
+                )}
                 <input
                     className='edit-note-title'
                     type='text'
