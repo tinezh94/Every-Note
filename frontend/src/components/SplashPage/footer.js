@@ -14,12 +14,12 @@ const Footer = () => {
                   {showAboutLinks && (
                     <ul className="about-links-container">
                       <li>
-                        <a className="about-links" href="https://github.com/tinezh94">
+                        <a className="about-links" href="https://github.com/tinezh94" target="_blank">
                           <i className="fa-brands fa-github"></i>
                         </a>
                       </li>
                       <li>
-                        <a className="about-links" href="https://www.linkedin.com/in/christine-zhang-4b263080/">
+                        <a className="about-links" href="https://www.linkedin.com/in/christine-zhang-4b263080/" target="_blank">
                           <i className="fa-brands fa-linkedin"></i>
                         </a>
                       </li>
