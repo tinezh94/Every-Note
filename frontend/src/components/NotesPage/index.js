@@ -36,7 +36,7 @@ const NotesListingPage = () => {
                     <AddNewNoteModal  />
                     <div className="all-notes-container">
                         {notesSelector && notesArr.map(note => (
-                            <div className="one-note-container" key={note.id}>
+                            <div className="one-note-container" key={note?.id}>
                                 <h3 className="one-note-title">{note.title}</h3>
                                 <p className="one-note-content">{note.content}</p>
                                 <EditNoteModal note={note} />
