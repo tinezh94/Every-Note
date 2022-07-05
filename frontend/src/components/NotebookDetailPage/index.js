@@ -12,7 +12,7 @@ import SideNavBar from '../SideNavBar';
 import './NotebookDetail.css';
 // import '../NotesPage/NotesPage.css';
 
-const NotebobookDetailPage = ( { sessionUser }) => {
+const NotebobookDetailPage = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
@@ -21,11 +21,14 @@ const NotebobookDetailPage = ( { sessionUser }) => {
     // const [ oldNote, setOldNote ] = useState('');
     // const [ readNote, setReadNote ] = useState(true);
 
+    const sessionUser = useSelector(state => state?.session?.user);
+    const allNotebooks = useSelector(state => state ? state.notebooks : null);
+
     useEffect(() => {
         dispatch(getNotebooksThunk(sessionUser?.id));
-    },[dispatch, sessionUser?.id]);
+    },[dispatch]);
 
-    const allNotebooks = useSelector(state => state?.notebooks);
+
 
     console.log("IN COMPONENT, ALL NOTEBOOKS", allNotebooks)
     const notebook = allNotebooks[id];

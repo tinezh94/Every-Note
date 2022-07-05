@@ -12,7 +12,7 @@ const NotesListingPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [ notes, setNotes ] = useState([]);
+    // const [ notes, setNotes ] = useState([]);
 
     const sessionUser = useSelector(state => state.session.user);
     if (!sessionUser) history.push('/');

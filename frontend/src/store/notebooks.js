@@ -51,10 +51,12 @@ const deleteNotebook = notebookId => {
 
 //thunk action creators
 export const getNotebooksThunk = (userId) => async (dispatch) => {
+    console.log('IN GET ALL THUNK',userId)
     const res = await fetch(`/api/notebooks/user/${userId}`);
-
+    console.log('IN THUNK GET ALL AFTER FETCH', res)
     if (res.ok) {
         const data = await res.json();
+        console.log('IN THUNK get all RES.OK', data)
         dispatch(getNotebooks(data));
         return res;
     }
