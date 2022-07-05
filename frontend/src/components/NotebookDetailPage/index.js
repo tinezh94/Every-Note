@@ -24,9 +24,9 @@ const NotebobookDetailPage = () => {
     const sessionUser = useSelector(state => state?.session?.user);
     const allNotebooks = useSelector(state => state ? state.notebooks : null);
 
-    useEffect(() => {
-        dispatch(getNotebooksThunk(sessionUser?.id));
-    },[dispatch]);
+    // useEffect(() => {
+    //     dispatch(getNotebooksThunk(sessionUser?.id));
+    // },[dispatch]);
 
 
 
@@ -35,11 +35,12 @@ const NotebobookDetailPage = () => {
 
     console.log("COMPONENT, NOTEBOOK", notebook)
 
-    const notes = useSelector(state => state.notes);
+    const notes = useSelector(state => state?.notes);
     const notesArr = Object.values(notes);
 
     useEffect(() => {
-        dispatch(getOneNotebookThunk(id));
+        // dispatch(getNotebooksThunk(sessionUser?.id));
+        // dispatch(getOneNotebookThunk(id));
         dispatch(getNotebookNotesThunk(id));
     }, [dispatch]);
 
@@ -55,7 +56,7 @@ const NotebobookDetailPage = () => {
                         <AddNewNoteModal />
                         {notebook && notesArr && (
                             <div id='allNotesContainer'>
-                                {notesArr && notesArr.map(note => (
+                                {notesArr && notesArr?.map(note => (
                                         <div className='single-note-container'>
                                             <h4 className='single-note-title' key={note.title}>{note.title}</h4>
                                             <div className='single-note-content-div'>
