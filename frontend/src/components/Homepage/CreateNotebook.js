@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { createNotebookThunk } from '../../store/notebooks';
 
-const CreateNotebook = () => {
+const CreateNotebook = ({hideForm}) => {
 
     const [ name, setName ] = useState('');
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
@@ -40,9 +40,9 @@ const CreateNotebook = () => {
 
         let createdNotebook = await dispatch(createNotebookThunk(payload));
 
-        //****** NEEDS DEBUGGGGGGGGG*!!!!!!!!!!!!!!!********* */
         if (createdNotebook) reset();
         setHasSubmitted(false);
+        hideForm();
         history.push(`/notebooks/notebook/${createdNotebook.id}`);
     };
 

@@ -45,7 +45,7 @@ const SideNavBar = () => {
                 </div>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateNotebook />
+                        <CreateNotebook hideForm={() => setShowModal(false)} />
                     </Modal>
                 )}
                 <div>
