@@ -24,9 +24,9 @@ const NotesListingPage = () => {
         dispatch(getNotesThunk(sessionUser?.id));
     }, [dispatch]);
 
-    useEffect(() => {
-        setNotes(notesSelector);
-    }, [notesSelector, notes]);  //?????
+    // useEffect(() => {
+    //     setNotes(notesSelector);
+    // }, [notesSelector, notes]);  //?????
 
     return (
         <>

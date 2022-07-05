@@ -18,12 +18,12 @@ const NotebobookDetailPage = ( { sessionUser }) => {
 
     // const currentSessionId = sessionUser.id;
     // console.log(notebook)
-    const [ oldNote, setOldNote ] = useState('');
-    const [ readNote, setReadNote ] = useState(true);
+    // const [ oldNote, setOldNote ] = useState('');
+    // const [ readNote, setReadNote ] = useState(true);
 
     useEffect(() => {
         dispatch(getNotebooksThunk(sessionUser?.id));
-    },[dispatch]);
+    },[dispatch, sessionUser?.id]);
 
     const allNotebooks = useSelector(state => state?.notebooks);
 
@@ -34,7 +34,7 @@ const NotebobookDetailPage = ( { sessionUser }) => {
 
     const notes = useSelector(state => state.notes);
     const notesArr = Object.values(notes);
-    // const [ loaded, setLoaded ] = useState(false);
+
     useEffect(() => {
         dispatch(getOneNotebookThunk(id));
         dispatch(getNotebookNotesThunk(id));

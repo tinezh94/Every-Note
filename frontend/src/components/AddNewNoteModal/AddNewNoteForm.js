@@ -28,8 +28,8 @@ const AddNeNoteForm = ({hideForm}) => {
     },[title]);
 
     useEffect(() => {
-        setNotes(notesSelector)
-        // dispatch(getNotebookNotesThunk(id))
+        // setNotes(notesSelector)
+        dispatch(getNotebookNotesThunk(id))
     }, [dispatch, notesSelector]);
 
     const onSubmit = async (e) => {
