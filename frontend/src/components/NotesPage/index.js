@@ -7,6 +7,7 @@ import EditNoteModal from '../EditNoteModal';
 import DeleteNoteModal from '../DeleteNoteModal';
 import SideNavBar from "../SideNavBar";
 import './NotesPage.css';
+import AddNewNote from "../AddNewNote";
 
 const NotesListingPage = () => {
     const dispatch = useDispatch();
@@ -33,17 +34,19 @@ const NotesListingPage = () => {
             <div className="notes-page-container">
                 <SideNavBar />
                 <div className="notes-container">
-                    <AddNewNoteModal  />
+                    {/* <AddNewNoteModal  /> */}
+
                     <div className="all-notes-container">
                         {notesSelector && notesArr.map(note => (
                             <div className="one-note-container" key={note?.id}>
                                 <h3 className="one-note-title">{note.title}</h3>
-                                <p className="one-note-content">{note.content}</p>
-                                <EditNoteModal note={note} />
-                                <DeleteNoteModal note={note} />
+                                <p className="one-note-content" dangerouslySetInnerHTML={{__html: note.content}}></p>
+                                {/* <EditNoteModal note={note} />
+                                <DeleteNoteModal note={note} /> */}
                             </div>
                         ))}
                     </div>
+                    <AddNewNote /> 
                 </div>
             </div>
         </>

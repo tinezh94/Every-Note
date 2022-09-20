@@ -138,11 +138,13 @@ span#single-note-content {
 
 /* Add New Note */
 .add-new-note-title {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
     line-height: 1.75;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
+    background-color: transparent;
+    margin-left: 25px;
 }
 
 .add-new-note-text {
@@ -153,17 +155,19 @@ span#single-note-content {
 
 .save-new-note-div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .save-new-note {
     border: none;
     background-color: #00a82d;
-    width: 180px;
+    width: 75px;
     height: 30px;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin-top: 10px;
+    margin-right: 15px;
 }
 
 .save-new-note:hover {

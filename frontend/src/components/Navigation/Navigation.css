@@ -13,14 +13,14 @@
 #logo-image {
     width: 46px;
     height: 46px;
-    padding-top: 10px;
-    padding: 10px;
+    padding-top: 35px;
+    padding-left: 10px;
 }
 
 .homepage-title {
     display: inline-block;
     padding-left: 6px;
-    margin-top: 16px;
+    /* margin-top: 16px; */
     font-family: "Soleil", Helvetica, Arial, sans-serif;
 }
 

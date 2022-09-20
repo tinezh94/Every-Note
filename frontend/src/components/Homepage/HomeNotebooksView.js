@@ -7,7 +7,7 @@ const HomeNotebooksView = ({ notebooks }) => {
     return (
         <>
             <div>
-                <h1 className="h1-titles">Notebooks</h1>
+                <h1 className="h1-titles" id='homepage-notebook-h1'>Notebooks</h1>
             </div>
             <div className="home-notebooks-container">
                 {notebooksArr?.map(notebook => (

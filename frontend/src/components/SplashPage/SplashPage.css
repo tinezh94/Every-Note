@@ -2,7 +2,8 @@ h1 {
     padding-top: 20px;
     text-align: center;
     font-size: 50px;
-    font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+    font-family: "Soleil_Medium", Helvetica, Arial, sans-serif;
+    line-height: 150%;
 }
 
 .description {
@@ -79,7 +80,10 @@ h3 {
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
     border-top: 0.8px solid rgb(159, 157, 157);
+    min-width: 100vw;
     padding-top: 20px;
 }
 
