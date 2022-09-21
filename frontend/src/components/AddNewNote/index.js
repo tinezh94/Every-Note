@@ -1,7 +1,9 @@
 import { useState, useEffect, React, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { createNoteThunk, getNotebookNotesThunk } from '../../store/notes';
+import { createNoteThunk, getNotebookNotesThunk, editNoteThunk, getNotesThunk } from '../../store/notes';
+
+import DeleteNoteModal from '../DeleteNoteModal';
 
 // import ReactHtmlParser from 'react-html-parser';
 // import TextEditor from './richTextEditor';
@@ -10,7 +12,7 @@ import { createNoteThunk, getNotebookNotesThunk } from '../../store/notes';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import styled from "styled-components";
-import parse from 'html-react-parser';
+import ReactHtmlParser from 'html-react-parser';
 
 // import Editor from './richTextEditor'
 
@@ -39,7 +41,7 @@ import parse from 'html-react-parser';
       
 // };
 
-const AddNewNote = () => {
+const AddNewNote = ({ note }) => {
     const dispatch = useDispatch();
     // const history = useHistory();
     const { id } = useParams();
@@ -50,10 +52,20 @@ const AddNewNote = () => {
     const sessionUser = useSelector(state => state.session.user);
     const notesSelector = useSelector(state => state.notes);
 
+    // console.log('selecteddd', note)
+    
     const [ title, setTitle ] = useState('');
     const [ content, setContent] = useState('');
+    const [ newNote, setNewNote ] = useState(true);
+    const [ editTitle, setEditTitle ] = useState(note?.title);
+    const [ editContent, setEditContent ] = useState(note?.content); 
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
+    
+    // console.log('edittitle', editTitle, note?.title)
+    // console.log('edittitle', editContent, note?.content)
+
+    // console.log('new note?', newNote)
 
     useEffect(() => {
         const errors =[];
@@ -63,9 +75,19 @@ const AddNewNote = () => {
     },[title]);
 
     useEffect(() => {
-        // setNotes(notesSelector)
-        dispatch(getNotebookNotesThunk(id))
-    }, [dispatch, notesSelector]);
+        if (note) {
+            setNewNote(false);
+        }
+        setEditTitle(note?.title);
+        setEditContent(note?.content);
+    }, [note, note?.title, note?.content]);
+
+    
+    // useEffect(() => {
+    //     // setNotes(notesSelector)
+    //     dispatch(getNotebookNotesThunk(id))
+    //     dispatch(getNotesThunk(sessionUser.id));
+    // }, [dispatch]);
 
 
     const onSubmit = async (e) => {
@@ -74,6 +96,8 @@ const AddNewNote = () => {
         if (validationErrors.length > 0) alert('Cannot Add Note');
 
         const payload = {
+            // title: title ? title : editTitle,
+            // content: content ? content : editContent,
             title,
             content,
             userId: sessionUser.id,
@@ -85,12 +109,39 @@ const AddNewNote = () => {
         let createdNote = await dispatch(createNoteThunk(payload));
         if (createdNote) reset();
         setHasSubmitted(false);
+        setTitle('');
+        setContent('');
         // history.push(`/notebooks/notebook/${id}`);
+    }
+
+    const editSubmit = async (e) => {
+        e.preventDefault();
+        setHasSubmitted(true);
+        // if (validationErrors.length > 0) alert('Cannot Edit Note');
+
+        const payload = {
+            id: note.id,
+            title: editTitle,
+            content: editContent,
+            userId: sessionUser.id,
+            notebookId: id || note.notebookId || 1
+        }
+
+        let edittedNote = await dispatch(editNoteThunk(payload));
+        // await dispatch(getNotebookNotesThunk(id));
+        if (edittedNote) reset();
+        setHasSubmitted(false);
+        setEditTitle('');
+        setEditContent('');
+        // hideForm();
+        // history.push(`/notebooks/notebook/${id}`)
     }
 
     const reset = () => {
         setTitle('');
         setContent('');
+        setEditTitle('');
+        setEditContent('');
     };
 
     if (title) {
@@ -108,16 +159,17 @@ const AddNewNote = () => {
         ]
     }
     
-    // const onChangeText = () => {
-    //     const editor = reactQuillRef.getEditor();
-    //     const unpriviligedEditor = reactQuillRef.makeUnprivilegedEditor(editor);
-    //     content = unpriviligedEditor.getText();
-    // }
+    
+    useEffect(() => {
+        setContent(content);
+        setTitle(title)
+    }, [title, content])
+
 
 
     return (
         <div>
-            <form onSubmit={onSubmit} className='add-new-note-form'>
+            <form onSubmit={newNote ? onSubmit : editSubmit} className='add-new-note-form'>
                 {hasSubmitted && validationErrors.length > 0 && (
                         <ul>
                             {validationErrors.map((error) => (
@@ -127,24 +179,55 @@ const AddNewNote = () => {
                     )}
                 <div className='save-new-note-div'>
                     <button className='save-new-note' type="submit">Save</button>
+                    <DeleteNoteModal note={note} />
                 </div>
-                <EditerContainer>
-                    <input 
-                    className='add-new-note-title'
-                    id='new-note-title'
-                    type='text'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                    placeholder='Title' />
-                    <ReactQuill 
-                        ref={reactQuillRef}
-                        theme='snow' 
-                        modules={modules}
-                        placeholder='Start writing something here...'
-                        value={content}
-                        onChange={setContent}
-                    />
-                </EditerContainer>
+                {newNote && (
+                    <EditerContainer>
+                        <div className='add-new-note-title-div'>
+                            <input 
+                            className='add-new-note-title'
+                            id='new-note-title'
+                            type='text'
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            placeholder='Title' 
+                            />
+                        </div>
+                        <ReactQuill 
+                            id='quill-editor'
+                            ref={reactQuillRef}
+                            theme='snow' 
+                            modules={modules}
+                            placeholder='Start writing something here...'
+                            // defaultValue={selectedContent ? selectedContent : ''}
+                            value={content}
+                            onChange={setContent}
+                        />
+                    </EditerContainer>
+                )}
+                {!newNote && (
+                    <EditerContainer>
+                        <div className='add-new-note-title-div'>
+                            <input 
+                            className='add-new-note-title'
+                            id='new-note-title'
+                            type='text'
+                            value={editTitle}
+                            onChange={e => setEditTitle(e.target.value)}
+                            placeholder='Title' 
+                            />
+                        </div>
+                        <ReactQuill 
+                            id='quill-editor'
+                            ref={reactQuillRef}
+                            theme='snow' 
+                            modules={modules}
+                            placeholder='Start writing something here...'
+                            value={editContent}
+                            onChange={setEditContent}
+                        />
+                    </EditerContainer>
+                )} 
             </form>
         </div>
     )
@@ -163,7 +246,7 @@ const EditerContainer = styled.div`
     .ql-toolbar,
     .ql-container {
         border: none !important;
-        padding-left: 30px;
+        padding-left: 22px;
     }
 
     .ql-toolbar {
@@ -173,6 +256,7 @@ const EditerContainer = styled.div`
     .quill,
     .ql-container {
         min-height: 100%;
+        width: 406px;
     }
 
     .ql-container {
@@ -188,6 +272,12 @@ const EditerContainer = styled.div`
     .ql-editor p {
         color: white;
         font-size: 14px;
+    }
+    
+    .ql-editor {
+        word-break: break-word;
+        // height: 100vh;
+        width: 220%;
     }
 
 `
