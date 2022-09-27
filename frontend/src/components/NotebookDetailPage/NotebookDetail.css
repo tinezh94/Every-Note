@@ -152,7 +152,16 @@ span#single-note-content {
     border: none;
     width: 90%;
     box-sizing: border-box;
-    margin-bottom: 8.5px;
+    color: white;
+    /* margin-bottom: 8px; */
+}
+
+.note-updated-at-div {
+    margin-left: 25px;
+    color: #a6a6a6;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .add-new-note-text {

@@ -17,7 +17,7 @@
     flex-direction: column;
     /* justify-content: space-around; */
     min-height: 100vh;
-    background-color: white;
+    background-color: black;
     position: relative;
 }
 
@@ -55,7 +55,7 @@
     font-size: 18px;
     color: white;
     line-height: 16px;
-    padding: 4px 0;
+    /* padding: 4px 0; */
     font-weight: 450;
     text-transform: uppercase;
     text-align: left;
@@ -63,34 +63,49 @@
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-#homepage-notebook-h1 {
+/* #homepage-notebook-h1 {
     margin-left: 30px;
     padding-left: 0;
+} */
+
+.home-view-notes-div {
+    border: 1px solid #151414;
+    border-radius: 5px;
+    background-color: #151414;
+    padding: 8px;
 }
 
 .home-notes-container {
     display: flex;
-    width: 35em;
+    width: 43em;
     height: 20em;
     border-radius: 5px;
     box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
     overflow-x: auto;
     overflow-y: hidden;
-    background-color: white;
-    border: solid transparent 1px;
+    /* background-color: white; */
+    /* border: solid transparent 1px; */
     margin-left: 10px;
 }
 
 .note-div {
-    border: solid 0.5px lightgrey;
+    /* border: solid 0.5px lightgrey; */
     box-shadow: rgb(0, 0, 0, 0.3) 1px 2px 6px;
     height: 85%;
     margin: 5px;
     margin-top: 22px;
-    width: 16rem;
+    width: 13rem;
     border-radius: 5px;
     text-decoration: none;
-    color: black
+    color: black;
+    background-color: #262626;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-div:hover {
+    box-shadow: 0 0 4px 4px rgb(14, 13, 13);
+    background-color: #2b2a2a;
 }
 
 .note-title {
@@ -100,6 +115,8 @@
     line-height: 1.25em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: none;
+    color: #e6e6e6;
+    text-transform: capitalize;
 }
 
 .note-title:hover {
@@ -115,21 +132,53 @@
     padding-left: 8px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     overflow: hidden;
+    color: #a6a6a6;
+    /* padding: 5px; */
+    
 }
 
+p span {
+    width: 80%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    color: #a6a6a6 !important; 
+}
+
+.home-note-updated-at {
+    color: #a6a6a6;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 8px;
+    padding-bottom: 6px;
+    font-size: 14px;
+}
 
 /* Notebooks */
+.home-view-notebooks-div {
+    border: 1px solid #151414;
+    border-radius: 5px;
+    background-color: #151414;
+    padding: 6px;
+    margin-left: 20px;
+}
+
 .home-notebooks-container {
     display: flex;
     flex-direction: column;
     width: 27em;
-    height: 20em;
+    height: 17em;
     border-radius: 5px;
-    box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
+    box-shadow: rgb(0 0 0 / 20%) 1px 2px 6px;
     overflow: scroll;
     background-color: #ffeb82;
-    margin-left: 30px;
+    margin-left: 12px;
     border: solid transparent 1px;
+    margin-top: 22px;
+    margin-bottom: 24px;
+    margin-right: 12px;
 }
 
 .notebook-title-list {

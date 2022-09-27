@@ -165,6 +165,12 @@ const AddNewNote = ({ note }) => {
         setTitle(title)
     }, [title, content])
 
+    const toDate = (string) => {
+        const date = new Date(string)
+        const date1 = date.toDateString().split(' ')
+        return date1.slice(1,3).join(' ') + ',' + ' ' + date1.slice(3);
+    }
+
 
 
     return (
@@ -216,6 +222,9 @@ const AddNewNote = ({ note }) => {
                             onChange={e => setEditTitle(e.target.value)}
                             placeholder='Title' 
                             />
+                            <div className='note-updated-at-div'>
+                                <p>Last edited on {toDate(note?.updatedAt)}</p>
+                            </div>
                         </div>
                         <ReactQuill 
                             id='quill-editor'
