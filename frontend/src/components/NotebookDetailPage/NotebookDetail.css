@@ -27,6 +27,7 @@
 .notes-container {
     width: 100%;
     display: flex;
+    height: 100vh;
 }
 
 .notebook-notes-container {
@@ -137,12 +138,30 @@ span#single-note-content {
 }
 
 /* Add New Note */
+.add-new-note-title-div {
+    border-bottom: 0.4px solid rgb(166, 166, 166, 0.2);
+}
 .add-new-note-title {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
     line-height: 1.75;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 30px;
+    background-color: transparent;
+    margin-left: 25px;
+    border: none;
+    width: 90%;
+    box-sizing: border-box;
+    color: white;
+    /* margin-bottom: 8px; */
+}
+
+.note-updated-at-div {
+    margin-left: 25px;
+    color: #a6a6a6;
+    font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .add-new-note-text {
@@ -153,17 +172,19 @@ span#single-note-content {
 
 .save-new-note-div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .save-new-note {
     border: none;
     background-color: #00a82d;
-    width: 180px;
+    width: 75px;
     height: 30px;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin-top: 10px;
+    margin-right: 15px;
 }
 
 .save-new-note:hover {

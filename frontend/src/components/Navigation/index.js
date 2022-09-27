@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import logo from './logo.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -27,7 +28,7 @@ function Navigation({ isLoaded }){
     <div className='homepage-nav'>
       <div className='homepage-logo-title'>
         <NavLink exact to='/home'>
-          <img id='logo-image' src='https://cdn-icons-png.flaticon.com/512/889/889669.png' alt='post-it' />
+          <img id='logo-image' src={logo} alt='post-it' />
         </NavLink>
         <h1 className='homepage-title'>EveryNote</h1>
       </div>

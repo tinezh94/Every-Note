@@ -5,9 +5,9 @@ const HomeNotebooksView = ({ notebooks }) => {
     const notebooksArr = Object.values(notebooks);
 
     return (
-        <>
+        <div className="home-view-notebooks-div">
             <div>
-                <h1 className="h1-titles">Notebooks</h1>
+                <h1 className="h1-titles" id='homepage-notebook-h1'>Notebooks</h1>
             </div>
             <div className="home-notebooks-container">
                 {notebooksArr?.map(notebook => (
@@ -19,7 +19,7 @@ const HomeNotebooksView = ({ notebooks }) => {
                     </NavLink>
                 ))}
             </div>
-        </>
+        </div>
     )
 };
 

@@ -49,6 +49,8 @@ router.post('/', validationNote, asyncHandler(async (req, res) => {
         notebookId: notebookId
     });
 
+    console.log('backend post newnote', newNote)
+
     const notes = await db.Note.findAll({
         where: {
             userId,

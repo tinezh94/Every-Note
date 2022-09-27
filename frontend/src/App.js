@@ -60,6 +60,9 @@ function App() {
           <Route exact path="/notes">
             <NotesListingPage />
           </Route>
+          {/* <Route exact path='/mynote'>
+            <AddNewNote />
+          </Route> */}
           <Route>
             Page Not Found
           </Route>

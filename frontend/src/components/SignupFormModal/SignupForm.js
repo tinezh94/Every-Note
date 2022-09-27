@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import { createNotebookThunk } from "../../store/notebooks";
 import SigninModal from "./SigninModal";
 import './SignupForm.css';
 
@@ -16,11 +17,18 @@ function SignupForm() {
 
   if (sessionUser) return <Redirect to="/" />;
 
+//   const payload = {
+//     id: 1,
+//     name: 'First Notebook',
+//     userId: sessionUser.id,
+// }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password }))
+        // .then(dispatch(createNotebookThunk(payload)))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
