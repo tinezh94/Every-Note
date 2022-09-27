@@ -66,9 +66,11 @@ const NotebookForm = () => {
 return (
     <>
         <div className='notebooks-page-container'>
-             <SideNavBar />
             <div>
-            <h1 className='page-title'>Notebooks</h1>
+                <SideNavBar />
+            </div>
+            <div className='notebooks-page-nb-container'>
+                <h1 className='page-title'>Notebooks</h1>
                  {/* {notebook = notebooksSelector && notebooksArr.map(notebook => (
                     <li key={notebook.id}>
                         <div>
@@ -91,11 +93,11 @@ return (
                             <div className='sub-header-created'>CREATED AT</div>
                             <div className='sub-header-actions'>ACTIONS</div>
                         </li>
-                            {notebook}
+                        {notebook}
                     </ul>
                 </div>
             </div>
-    </div>
+        </div>
     </>
     )
 }
