@@ -248,11 +248,11 @@ a {
     display: flex;
     flex-direction: column;
     width: 27em;
-    height: 17em;
+    height: 17.2em;
     border-radius: 5px;
-    box-shadow: rgb(0 0 0 / 20%) 1px 2px 6px;
+    /* box-shadow: rgb(0 0 0 / 20%) 1px 2px 6px; */
     overflow: scroll;
-    background-color: #ffeb82;
+    /* background-color: #ffeb82; */
     margin-left: 12px;
     border: solid transparent 1px;
     margin-top: 22px;
@@ -262,7 +262,7 @@ a {
 
 .notebook-title-list {
     text-decoration: none;
-    color: black;
+    color: #a6a6a6;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 16px;
 }
