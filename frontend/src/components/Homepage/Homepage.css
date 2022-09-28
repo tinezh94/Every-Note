@@ -156,6 +156,85 @@ p span {
     font-size: 14px;
 }
 
+.home-pg-note-ellipsis-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-page-note-ellipsis-container {
+    margin-top: 11px;
+}
+
+.home-pg-ellipsis-btn,
+.home-page-new-note-container {
+    background-color: transparent;
+    border: transparent;
+}
+
+
+
+.fa-solid.fa-ellipsis,
+.fa-solid.fa-file-lines {
+    color: white;
+    font-size: 14px;
+    width: 14px;
+    margin-left: 8px;
+    text-align: center;
+}
+
+.fa-solid.fa-file-lines {
+    font-size: 16px;
+}
+
+.fa-solid.fa-ellipsis:hover,
+.fa-solid.fa-file-lines:hover {
+    cursor: pointer;
+    background-color: #262626;
+    border-radius: 4px;
+}
+
+.home-page-note-drop-down-container {
+    position: relative;
+    /* margin: 10px; */
+}
+
+.home-page-note-drop-down-div {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 80px;
+    width: 140px;
+    background-color: #262626;
+    border: 0.5px solid #918b8b;
+    border-radius: 3px;
+    top: 0;
+    right: 0;
+    padding-top: 20px;
+}
+
+.go-to-notes,
+.create-new-note-drop-down {
+    padding-bottom: 10px;
+    color: #a6a6a6;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5;
+    font-weight: 550;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.go-to-notes:hover,
+.create-new-note-drop-down:hover {
+    cursor: pointer;
+    transition: ease-in 0.1s;
+    background-color: #605e5e;
+}
+
 /* Notebooks */
 .home-view-notebooks-div {
     border: 1px solid #151414;
@@ -169,11 +248,11 @@ p span {
     display: flex;
     flex-direction: column;
     width: 27em;
-    height: 17em;
+    height: 17.2em;
     border-radius: 5px;
-    box-shadow: rgb(0 0 0 / 20%) 1px 2px 6px;
+    /* box-shadow: rgb(0 0 0 / 20%) 1px 2px 6px; */
     overflow: scroll;
-    background-color: #ffeb82;
+    /* background-color: #ffeb82; */
     margin-left: 12px;
     border: solid transparent 1px;
     margin-top: 22px;
@@ -183,7 +262,7 @@ p span {
 
 .notebook-title-list {
     text-decoration: none;
-    color: black;
+    color: #a6a6a6;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 16px;
 }

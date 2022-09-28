@@ -43,7 +43,7 @@ const NotesListingPage = () => {
                             <p className="all-notes-length">{notesArr.length} notes</p>
                         </div>
                         <div className="all-notes-notes">
-                            {notesSelector && notesArr.map(note => (
+                            {notesSelector && notesArr.reverse().map(note => (
                                 <div className="one-note-container" id='one-note-div' key={note?.id} onClick={e => {setSelectedNote(note)}}>
                                     <h3 className="one-note-title">{note.title}</h3>
                                     <p className="one-note-content" dangerouslySetInnerHTML={{__html: note.content}}></p>

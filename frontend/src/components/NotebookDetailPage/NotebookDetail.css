@@ -190,3 +190,42 @@ span#single-note-content {
 .save-new-note:hover {
     background-color: #027921;
 }
+
+
+/* Notebook Page */
+
+.notebook-notes-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-solid.fa-book {
+    color: #d9d9d9;
+    /* padding-left: 12px; */
+}
+
+
+.notebook-pg-nb-name {
+    color: #d9d9d9;
+    font-size: 16px;
+    padding-top: 3px;
+    padding-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notebook-pg-nb-name {
+    text-transform: capitalize;
+}
+
+.notebook-pg-top-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.notebook-pg-notebook-container {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 6.3px;
+    margin-left: 10px;
+}

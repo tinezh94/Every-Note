@@ -42,7 +42,7 @@ const EditNotebook = ({ notebook, hideForm }) => {
 
         setHasSubmitted(false);
         hideForm();
-        history.push(`/notebooks/notebook/${editedNotebook.id}`);
+        // history.push(`/notebooks/notebook/${editedNotebook.id}`);
     }
 
     const editNotebookCancel = (e) => {
