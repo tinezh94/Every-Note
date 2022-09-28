@@ -273,3 +273,8 @@
 .confirm-delete-note-btn:hover {
     background-color: #027921;
 }
+
+.note-pg-note-container {
+    background-color: #262626;
+    min-height: 100vh;
+}

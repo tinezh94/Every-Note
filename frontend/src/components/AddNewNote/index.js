@@ -11,6 +11,7 @@ import DeleteNoteModal from '../DeleteNoteModal';
 // import 'quill/dist/quill.snow.css';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.bubble.css';
 import styled from "styled-components";
 import ReactHtmlParser from 'html-react-parser';
 
@@ -202,7 +203,7 @@ const AddNewNote = ({ note }) => {
                         <ReactQuill 
                             id='quill-editor'
                             ref={reactQuillRef}
-                            theme='snow' 
+                            theme='bubble' 
                             modules={modules}
                             placeholder='Start writing something here...'
                             // defaultValue={selectedContent ? selectedContent : ''}
@@ -229,7 +230,7 @@ const AddNewNote = ({ note }) => {
                         <ReactQuill 
                             id='quill-editor'
                             ref={reactQuillRef}
-                            theme='snow' 
+                            theme='bubble' 
                             modules={modules}
                             placeholder='Start writing something here...'
                             value={editContent}

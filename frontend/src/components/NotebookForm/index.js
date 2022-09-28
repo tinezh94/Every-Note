@@ -47,6 +47,11 @@ const NotebookForm = () => {
     //         setNotebooks(Object.values(notebooksSelector));
     //     }
     // }, [notebooksSelector]);
+    const toDate = (string) => {
+        const date = new Date(string)
+        const date1 = date.toDateString().split(' ')
+        return date1.slice(1,3).join(' ') + ',' + ' ' + date1.slice(3);
+    }
 
     let notebook;
     notebook = notebooksSelector && notebooksArr?.map(notebook => (
@@ -55,13 +60,14 @@ const NotebookForm = () => {
                 <Link id='link' to={`/notebooks/notebook/${notebook.id}`}>{notebook?.name}</Link>
             </div>
             <div className='sub-header-by'>{sessionUser.username}</div>
-            <div className='sub-header-created'>{notebook.createdAt}</div>
+            <div className='sub-header-created'>{toDate(notebook?.updatedAt)}</div>
             <div id="notebook-actions-btns" className='sub-header-actions'>
                 <EditNotebookModal notebook={notebook} />
                 <button className='delete-notebook' onClick={(e) => onDelete(e, notebook.id)}>Delete</button>
             </div>
         </li>
     ))
+
 
 return (
     <>
@@ -90,7 +96,7 @@ return (
                         <li className='sub-headers'>
                             <div className='sub-header-title'>TITLE</div>
                             <div className='sub-header-by'>CREATED BY</div>
-                            <div className='sub-header-created'>CREATED AT</div>
+                            <div className='sub-header-created'>UPDATED AT</div>
                             <div className='sub-header-actions'>ACTIONS</div>
                         </li>
                         {notebook}

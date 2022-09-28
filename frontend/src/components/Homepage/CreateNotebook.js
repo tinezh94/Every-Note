@@ -43,7 +43,7 @@ const CreateNotebook = ({hideForm}) => {
         if (createdNotebook) reset();
         setHasSubmitted(false);
         hideForm();
-        history.push(`/notebooks/notebook/${createdNotebook.id}`);
+        // history.push(`/notebooks/notebook/${createdNotebook.id}`);
     };
 
     const reset = () => {

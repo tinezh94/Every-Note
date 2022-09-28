@@ -30,10 +30,10 @@ const NotebobookDetailPage = () => {
 
 
 
-    console.log("IN COMPONENT, ALL NOTEBOOKS", allNotebooks)
+    // console.log("IN COMPONENT, ALL NOTEBOOKS", allNotebooks)
     const notebook = allNotebooks[id];
 
-    console.log("COMPONENT, NOTEBOOK", notebook)
+    // console.log("COMPONENT, NOTEBOOK", notebook)
 
     const notes = useSelector(state => state?.notes);
     const notesArr = Object.values(notes);
@@ -68,7 +68,7 @@ const NotebobookDetailPage = () => {
 
                                 ))}
                             </div>
-                            )}
+                        )}
                 </div>
             </div>
          </>

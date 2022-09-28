@@ -17,6 +17,7 @@ import NotebookDetailPage from './components/NotebookDetailPage';
 import NotesListingPage from "./components/NotesPage";
 import AddNewNote from "./components/AddNewNote";
 import CreateAcctModal from "./components/LoginFormModal/CreatAcctModal";
+import NotePage from "./components/NotePage/NotePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route exact path="/notebooks/notebook/:id">
             <NotebookDetailPage allNotebooks={allNotebooks} sessionUser={sessionUser} />
+          </Route>
+          <Route exact path='/notes/note/:id'>
+            <NotePage />
           </Route>
           <Route exact path="/notes">
             <NotesListingPage />
