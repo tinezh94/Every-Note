@@ -153,6 +153,7 @@ span#single-note-content {
     width: 90%;
     box-sizing: border-box;
     color: white;
+    outline: none;
     /* margin-bottom: 8px; */
 }
 

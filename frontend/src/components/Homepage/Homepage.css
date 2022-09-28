@@ -125,7 +125,7 @@
 }
 
 .note-content {
-    width: 15rem;
+    width: 12rem;
     height: 100%;
     word-wrap: break-word;
     padding: 3px;
@@ -140,12 +140,13 @@
 p span {
     width: 80%;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-word;
     color: #a6a6a6 !important; 
+    /* min-width: 100vw; */
 }
 
 .home-note-updated-at {
