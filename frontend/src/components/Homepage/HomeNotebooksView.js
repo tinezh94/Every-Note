@@ -5,9 +5,10 @@ import { useState } from "react";
 import { addScratch, editScratch, loadScratches, removeScratch } from "../../store/scratchpad";
 import { useEffect } from "react";
 
-const HomeNotebooksView = ({ scratches }) => {
+const HomeNotebooksView = ({ scratches, notebooks }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
+    const notebooksArr = notebooks ? Object.values(notebooks) : null;
     const scratchArr = scratches ? Object.values(scratches) : null;
 
     console.log(scratchArr)
@@ -55,15 +56,15 @@ const HomeNotebooksView = ({ scratches }) => {
                 <h1 className="h1-titles" id='homepage-notebook-h1'>Scratch Pad</h1>
             </div>
             <div className="home-notebooks-container">
-                {/* {notebooksArr?.map(notebook => (
+                {notebooksArr?.map(notebook => (
                     <NavLink
                         className={'notebook-title-list'}
                         key={notebook.id}
                         to={`/notebooks/notebook/${notebook.id}`}>
                             <h3 className="home-notebooks-title">{notebook.name}</h3>
                     </NavLink>
-                ))} */}
-                    <textarea
+                ))}
+                    {/* <textarea
                         id='new-scratch'
                         placeholder="Start writing..."
                         cols={'10'}
@@ -71,7 +72,7 @@ const HomeNotebooksView = ({ scratches }) => {
                         value={scratch}
                         onChange={e => setScratch(e.target.value)}
                     >
-                    </textarea>
+                    </textarea> */}
             </div>
         </div>
     )
