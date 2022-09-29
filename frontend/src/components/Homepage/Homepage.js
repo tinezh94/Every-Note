@@ -16,15 +16,16 @@ function Homepage() {
 
     const sessionUser = useSelector(state => state.session.user);
     const notes = useSelector(state => state.notes);
-    const notebooks = useSelector(state => state.notebooks);
+    // const notebooks = useSelector(state => state.notebooks);
+    const scratches = useSelector(state => state.scratches);
 
-    useEffect (() => {
-        dispatch(getNotebooksThunk(sessionUser.id));
-    }, [dispatch]);
+    // useEffect (() => {
+    //     dispatch(getNotebooksThunk(sessionUser.id));
+    // }, [dispatch, sessionUser?.id]);
 
     useEffect(() => {
         dispatch(getNotesThunk(sessionUser.id));
-    }, [dispatch]);
+    }, [dispatch, sessionUser?.id]);
 
     // console.log(notes)
     return (
@@ -40,7 +41,7 @@ function Homepage() {
                         <HomeNotesView notes={notes} />
                     </div>
                     <div>
-                        <HomeNotebooksView notebooks={notebooks}/>
+                        <HomeNotebooksView scratches={scratches} />
                     </div>
                 </div>
             </div>

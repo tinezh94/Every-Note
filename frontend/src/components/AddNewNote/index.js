@@ -107,7 +107,7 @@ const AddNewNote = ({ note }) => {
             notebookId: id || 1
         }
 
-        console.log('content', content);
+        console.log('content', payload);
 
         let createdNote = await dispatch(createNoteThunk(payload));
         if (createdNote) reset();
