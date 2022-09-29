@@ -16,7 +16,7 @@ function Homepage() {
 
     const sessionUser = useSelector(state => state.session.user);
     const notes = useSelector(state => state.notes);
-    // const notebooks = useSelector(state => state.notebooks);
+    const notebooks = useSelector(state => state.notebooks);
     const scratches = useSelector(state => state.scratches);
 
     // useEffect (() => {
@@ -41,7 +41,7 @@ function Homepage() {
                         <HomeNotesView notes={notes} />
                     </div>
                     <div>
-                        <HomeNotebooksView scratches={scratches} />
+                        <HomeNotebooksView scratches={scratches} notebooks={notebooks} />
                     </div>
                 </div>
             </div>
