@@ -88,6 +88,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Notebook, {foreignKey: 'userId', onDelete: 'CASCADE'});
     User.hasMany(models.Note, {foreignKey: 'userId', onDelete: 'CASCADE'});
+    User.hasMany(models.Scratchpad, {foreignKey: 'userId', onDelete: 'CASCADE'});
   };
 
   return User;

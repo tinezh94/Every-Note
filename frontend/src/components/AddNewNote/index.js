@@ -71,9 +71,11 @@ const AddNewNote = ({ note }) => {
     useEffect(() => {
         const errors =[];
 
-        if (!title) errors.push("Note title cannot be empty");
+        if (!title && !editTitle) errors.push("Note title cannot be empty");
+        if (title?.length > 25 || editTitle?.length > 25) errors.push('Title is too long');
+        if (content?.length > 1000 || editContent?.length > 1000) errors.push('Please divide up the content in separate notes');
         setValidationErrors(errors);
-    },[title]);
+    },[title, content, editTitle, editContent]);
 
     useEffect(() => {
         if (note) {
@@ -105,7 +107,7 @@ const AddNewNote = ({ note }) => {
             notebookId: id || 1
         }
 
-        console.log('content', content);
+        console.log('content', payload);
 
         let createdNote = await dispatch(createNoteThunk(payload));
         if (createdNote) reset();

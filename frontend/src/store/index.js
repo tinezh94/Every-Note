@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import notebooksReducer from "./notebooks";
 import notesReducer from "./notes";
 import sessionReducer from "./session";
+import scratchesReducer from "./scratchpad";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   notebooks: notebooksReducer,
   notes: notesReducer,
+  scratches: scratchesReducer,
 });
 
 let enhancer;
