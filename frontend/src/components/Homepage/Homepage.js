@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Modal } from '../../context/Modal';
 import { getNotebooksThunk } from '../../store/notebooks';
 import { getNotesThunk } from '../../store/notes';
 import SideNavBar from '../SideNavBar';
-// import CreateNotebook from './CreateNotebook';
 import HomeNotebooksView from './HomeNotebooksView';
 import HomeNotesView from './HomeNotesView';
 import './Homepage.css'
@@ -18,10 +16,6 @@ function Homepage() {
     const notes = useSelector(state => state.notes);
     const notebooks = useSelector(state => state.notebooks);
     const scratches = useSelector(state => state.scratches);
-
-    // useEffect (() => {
-    //     dispatch(getNotebooksThunk(sessionUser.id));
-    // }, [dispatch, sessionUser?.id]);
 
     useEffect(() => {
         dispatch(getNotesThunk(sessionUser.id));
