@@ -4,6 +4,8 @@
     min-height: 100vh;
     float: left;
     border-right: 1px solid #262626;
+    position: fixed;
+    top: 0;
 }
 
 .fa-solid.fa-user-check {
@@ -18,7 +20,7 @@
     margin: 10px;
     padding: 10px;
     text-align: left;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .search-note-div {
@@ -75,12 +77,12 @@ input.search-bar-input {
     border: none;
     margin-bottom: 10px;
     text-align: left;
-    color: black;
+    color: #000000;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     line-height: 1.25;
     font-size: 16px;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 12px;
     margin-left: 5px;
     margin-right: 5px;
 
@@ -139,7 +141,7 @@ a {
 .notebooks-btn {
     text-decoration: none;
     cursor: pointer;
-    color: white;
+    color: #a6a6a6;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     line-height: 1.25;
     font-size: 16px;

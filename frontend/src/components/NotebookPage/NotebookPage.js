@@ -167,7 +167,7 @@ const EditerContainer = styled.div`
     .quill,
     .ql-container {
         min-height: 100%;
-        width: 406px;
+        width: 96%;
     }
 
     .ql-container {

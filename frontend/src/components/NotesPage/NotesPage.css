@@ -28,7 +28,7 @@
 
 .add-new-note-form {
     min-height: 100vh;
-    min-width: 217%;
+    width: 84%;
     background-color: #262626;
 }
 
@@ -277,4 +277,9 @@
 .note-pg-note-container {
     background-color: #262626;
     min-height: 100vh;
+}
+
+.new-note-div {
+    width: 100%;
+    margin-right: 0;
 }

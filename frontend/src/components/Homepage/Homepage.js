@@ -31,12 +31,12 @@ function Homepage() {
                 </div>
 
                 <div className='home-note-notebook-container'>
-                    <div>
+                    {/* <div> */}
                         <HomeNotesView notes={notes} />
-                    </div>
-                    <div>
+                    {/* </div> */}
+                    {/* <div> */}
                         <HomeNotebooksView scratches={scratches} notebooks={notebooks} />
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         </div>

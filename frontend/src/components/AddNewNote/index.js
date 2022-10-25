@@ -177,7 +177,7 @@ const AddNewNote = ({ note }) => {
 
 
     return (
-        <div>
+        <div className='new-note-div'>
             <form onSubmit={newNote ? onSubmit : editSubmit} className='add-new-note-form'>
                 {hasSubmitted && validationErrors.length > 0 && (
                         <ul>

@@ -39,12 +39,15 @@ function SignupForm() {
 
   return (
     <div>
+      <div>
+        <h4 className="login-form-h4">Remember everything important.</h4>
+      </div>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div className="form-content">
-            <div>
+            <div className="login-form-section">
                 <label className='signup-form-label'>Email</label>
                 <div className="signup-form-input-div">
                     <input
@@ -57,7 +60,7 @@ function SignupForm() {
                     />
                 </div>
             </div>
-            <div>
+            <div className="login-form-section">
                 <label className='signup-form-label'>Username</label>
                 <div className="signup-form-input-div">
                     <input
@@ -70,7 +73,7 @@ function SignupForm() {
                     />
                 </div>
             </div>
-            <div>
+            <div className="login-form-section">
                 <label className='signup-form-label'>Password</label>
                 <div className="signup-form-input-div">
                     <input
@@ -83,7 +86,7 @@ function SignupForm() {
                     />
                 </div>
             </div>
-            <div>
+            <div className="login-form-section">
                 <label className='signup-form-label'>Confirm Password</label>
                 <div className="signup-form-input-div">
                     <input

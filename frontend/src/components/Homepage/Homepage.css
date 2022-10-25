@@ -18,13 +18,15 @@
     /* justify-content: space-around; */
     min-height: 100vh;
     background-color: black;
-    position: relative;
+    position: fixed;
+    width: 100%;
+    left: 251px;
 }
 
 .homepage-title-container {
     background-image: url("https://i.pinimg.com/originals/fd/bf/d9/fdbfd9eb52304c2dbdf62d0acaab7e7d.jpg");
     background-size: cover;
-    height: 30rem;
+    height: 510px;
     background-position: center;
     position: relative;
     /* top: -71px; */
@@ -36,17 +38,22 @@
     font-weight: 450;
     text-align: left;
     padding-left: 20px;
-    color: rgb(228, 223, 223);
+    color: #ffffff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .home-note-notebook-container {
     display: flex;
-    justify-content: space-evenly;
+    /* display: flex; */
+    justify-content: flex-start;
     /* min-height: 100vh; */
     position: absolute;
-    top: 20em;
-    margin-left: 7px;
+    top: 26em;
+    /* margin-left: 7px; */
+    width: 85%;
+    height: 50%;
+    margin-left: 15px;
+    
 }
 
 /*  Notes View */
@@ -70,15 +77,20 @@
 
 .home-view-notes-div {
     border: 1px solid #151414;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: #151414;
     padding: 8px;
+    height: 90%;
+    width: 60%;
+    /* min-width: 960px;
+    min-height: 450px;
+    margin-left: 10px; */
 }
 
 .home-notes-container {
     display: flex;
-    width: 43em;
-    height: 20em;
+    /* width: 43em;
+    height: 20em; */
     border-radius: 5px;
     box-shadow: rgb(0, 0, 0, 0.2) 1px 2px 6px;
     overflow-x: auto;
@@ -86,6 +98,7 @@
     /* background-color: white; */
     /* border: solid transparent 1px; */
     margin-left: 10px;
+    height: 85%;
 }
 
 .note-div {
@@ -93,7 +106,7 @@
     box-shadow: rgb(0, 0, 0, 0.3) 1px 2px 6px;
     height: 85%;
     margin: 5px;
-    margin-top: 22px;
+    margin-top: 30px;
     width: 13rem;
     border-radius: 5px;
     text-decoration: none;
@@ -239,10 +252,15 @@ a {
 /* Notebooks */
 .home-view-notebooks-div {
     border: 1px solid #151414;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: #151414;
-    padding: 6px;
-    margin-left: 20px;
+    padding: 8px;
+    height: 90%;
+    width: 30%;
+    margin-left: 12px;
+    /* margin-left: 20px;
+    min-width: 500spx;
+    min-height: 450px; */
 }
 
 .home-notebooks-container {

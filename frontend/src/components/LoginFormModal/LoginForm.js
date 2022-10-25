@@ -54,6 +54,9 @@ function LoginForm() {
 
   return (
     <div>
+      <div>
+        <h4 className="login-form-h4">Remember everything important.</h4>
+      </div>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -61,7 +64,7 @@ function LoginForm() {
           ))}
         </ul>
         <div className="form-content">
-          <div>
+          <div className="login-form-section">
             <label className="login-form-label">
               Username or Email
             </label>
@@ -76,7 +79,7 @@ function LoginForm() {
               />
             </div>
           </div>
-          <div>
+          <div className="login-form-section">
             <label className="login-form-label">
               Password
             </label>

@@ -28,8 +28,10 @@
 .signup-form-label {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
-    padding: 10px 10px;
-    margin: 10px 10px;
+    /* padding: 10px 10px;
+    margin: 10px 10px; */
+    padding-left: 5px;
+    color: #6a6a6a;
 }
 
 .form-content {
@@ -44,30 +46,44 @@
 }
 
 .signup-form-input {
-    width: 250px;
+    width: 320px;
+    line-height: 36px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    padding-left: 8px;
+    font-size: 16px;
+    color: #333333
 }
 
 .signup-button-div {
     display: flex;
     justify-content: center;
     padding-top: 10px;
+    margin-bottom: 10px;
 }
 
 .signup-button {
-    width: 120px;
-    height: 30px;
+    width: 320px;
+    /* height: 30px; */
     font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     background-color: #00a82d;
     border: 1px solid #00a82d;
     color: white;
     border-radius: 7px;
-    font-weight: 400;
+    font-weight: 350;
     cursor: pointer;
+    line-height: 36px;
 }
 
 .signup-button:hover {
     background-color: #027921;
+}
+
+.switch-to-login-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .have-account {
@@ -75,6 +91,7 @@
     font-size: 14px;
     color: #737373;
     text-align: center;
+    letter-spacing: 0.5;
 }
 
 .login-to-account {
@@ -83,7 +100,7 @@
     color: #00a82d;
     text-align: center;
     text-decoration: none;
-    margin-left: 185px;
+    /* margin-left: 185px; */
     border: none;
     background-color: white;
 }
