@@ -416,3 +416,8 @@ form {
     padding-bottom: 0;
     color: #333333;
 }
+
+.new-notebook-error-div {
+    position: absolute;
+    top: 23px;
+}

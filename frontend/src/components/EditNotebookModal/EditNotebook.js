@@ -56,7 +56,7 @@ const EditNotebook = ({ notebook, hideForm }) => {
             <h3 className='edit-notebook-h3'>Rename notebook</h3>
             <form onSubmit={editNotebookOnSubmit}>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <ul>
+                        <ul className='new-notebook-error-div'>
                             {validationErrors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}

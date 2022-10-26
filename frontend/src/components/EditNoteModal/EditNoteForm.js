@@ -75,7 +75,7 @@ const EditNoteForm = ({ note, hideForm }) => {
         <>
             <form onSubmit={editSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && (
-                    <ul>
+                    <ul className='new-note-error-div'>
                         {validationErrors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}

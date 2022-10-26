@@ -286,3 +286,10 @@
     width: 100%;
     margin-right: 0;
 }
+
+.new-note-error-div {
+    position: absolute;
+    top: 10px;
+    padding-left: 20px;
+    color: #fff;
+}

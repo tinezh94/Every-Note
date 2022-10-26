@@ -40,7 +40,7 @@ const AddNeNoteForm = ({hideForm}) => {
         const payload = {
             title,
             content,
-            userId: sessionUser.id,
+            userId: sessionUser?.id,
             notebookId: id || 1
         }
 

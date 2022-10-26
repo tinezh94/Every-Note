@@ -35,7 +35,7 @@ const CreateNotebook = ({hideForm}) => {
 
         const payload = {
             name,
-            userId: sessionUser.id,
+            userId: sessionUser?.id,
         }
 
         let createdNotebook = await dispatch(createNotebookThunk(payload));
@@ -58,7 +58,7 @@ const CreateNotebook = ({hideForm}) => {
             <h5 className='create-notebook-h5'>Notebooks are useful for grouping notes around a common topic.</h5>
             <form onSubmit={onSubmit}>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <ul>
+                        <ul className='new-notebook-error-div'>
                             {validationErrors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}

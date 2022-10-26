@@ -180,7 +180,7 @@ const AddNewNote = ({ note }) => {
         <div className='new-note-div'>
             <form onSubmit={newNote ? onSubmit : editSubmit} className='add-new-note-form'>
                 {hasSubmitted && validationErrors.length > 0 && (
-                        <ul>
+                        <ul className='new-note-error-div'>
                             {validationErrors.map((error) => (
                                 <li key={error}>{error}</li>
                             ))}

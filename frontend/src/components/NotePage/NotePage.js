@@ -59,7 +59,7 @@ const NotePage = () => {
             // content: content ? content : editContent,
             title,
             content,
-            userId: sessionUser.id,
+            userId: sessionUser?.id,
             notebookId: id || 1
         }
 
@@ -82,7 +82,7 @@ const NotePage = () => {
             id: note.id,
             title: editTitle,
             content: editContent,
-            userId: sessionUser.id,
+            userId: sessionUser?.id,
             notebookId: id || note.notebookId || 1
         }
 

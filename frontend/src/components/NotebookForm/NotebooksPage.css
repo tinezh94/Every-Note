@@ -124,7 +124,9 @@ a#link:visited {
 
 .rename-notebook:hover,
 .delete-notebook:hover {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    text-decoration: underline;
+    background-color: #00a82da9;
 }
 
 .delete-notebook {

@@ -18,7 +18,7 @@ function Homepage() {
     const scratches = useSelector(state => state.scratches);
 
     useEffect(() => {
-        dispatch(getNotesThunk(sessionUser.id));
+        dispatch(getNotesThunk(sessionUser?.id));
     }, [dispatch, sessionUser?.id]);
 
     // console.log(notes)
