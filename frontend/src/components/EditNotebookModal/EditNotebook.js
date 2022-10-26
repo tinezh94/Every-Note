@@ -8,7 +8,7 @@ const EditNotebook = ({ notebook, hideForm }) => {
     const history = useHistory();
 
     // const { notebookId } = useParams();
-    const [ editName, setEditName ] = useState('');
+    const [ editName, setEditName ] = useState(notebook?.name);
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
 
@@ -53,6 +53,7 @@ const EditNotebook = ({ notebook, hideForm }) => {
     }
     return (
         <>
+            <h3 className='edit-notebook-h3'>Rename notebook</h3>
             <form onSubmit={editNotebookOnSubmit}>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul>

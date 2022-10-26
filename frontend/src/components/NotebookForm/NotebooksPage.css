@@ -99,8 +99,9 @@ a#link {
 }
 
 a#link:hover {
-    text-transform: uppercase;
-    color: #00a82d;
+    /* text-transform: uppercase; */
+    /* color: #00a82d; */
+    text-decoration: underline;
 }
 
 a#link:visited {
