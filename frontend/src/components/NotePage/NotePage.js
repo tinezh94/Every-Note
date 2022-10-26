@@ -225,7 +225,8 @@ const EditerContainer = styled.div`
     .quill,
     .ql-container {
         min-height: 100%;
-        width: 406px;
+        // width: 406px;
+        // width: 95%;
     }
 
     .ql-container {
@@ -246,7 +247,7 @@ const EditerContainer = styled.div`
     .ql-editor {
         word-break: break-word;
         // height: 100vh;
-        width: 220%;
+        width: 82%;
     }
 
 `

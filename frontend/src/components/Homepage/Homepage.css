@@ -143,7 +143,7 @@
     word-wrap: break-word;
     padding: 3px;
     padding-left: 8px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Cambria', Cochin, Georgia, Times, 'Times New Roman', sans-serif;
     overflow: hidden;
     color: #a6a6a6;
     /* padding: 5px; */
@@ -164,7 +164,7 @@ p span {
 
 .home-note-updated-at {
     color: #a6a6a6;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Cambria', Cochin, Georgia, Times, 'Times New Roman', sans-serif;
     padding-left: 8px;
     padding-bottom: 6px;
     font-size: 14px;
@@ -287,11 +287,14 @@ a {
 }
 
 .home-notebooks-title {
-    text-align: center;
+    /* text-align: center; */
     margin: 9px;
-    line-height: 1.25em;
+    line-height: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: none;
+    text-transform: capitalize;
+    padding-bottom: 3px;
+    font-weight: 400;
 }
 
 .home-notebooks-title:hover {
@@ -310,8 +313,9 @@ form {
 .create-notebook-label {
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: #333333;
 }
 
 .create-notebook-input {
@@ -319,6 +323,8 @@ form {
     line-height: 1.75;
     font-family: "Segoe UI", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
+    padding-left: 5px;
+    color: #333;
 }
 
 .create-notebook-btn-div {
@@ -329,7 +335,7 @@ form {
 .create-notebook-btn {
     border: none;
     background-color: #00a82d;
-    width: 180px;
+    width: 370px;
     height: 30px;
     border-radius: 5px;
     color: white;
@@ -380,4 +386,20 @@ form {
 
 .cancel-notebook-btn {
     margin-top: 5px;
+}
+
+.create-notebook-h3 {
+    text-transform: none;
+    letter-spacing: 0;
+    padding-top: 9px;
+    font-size: 14px;
+    font-weight: 550;
+    color: #333333;
+}
+
+.create-notebook-h5 {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #a6a6a6;
 }

@@ -8,6 +8,9 @@
 
 .notebooks-page-nb-container {
     width: 100%;
+    left: 251px;
+    position: fixed;
+    min-height: 100vh;
 }
 
 .page-title {
@@ -31,6 +34,8 @@
 
 .notebooks-container {
     padding: 20px;
+    min-width: 83%;
+    max-width: 84%;
 }
 
 .notebooks-header {
@@ -52,7 +57,7 @@
 }
 
 .notebooks-header li:nth-child(odd) {
-    background-color: 1a1a1a;
+    background-color: #1a1a1a;
     opacity: 0.8;
 }
 
@@ -61,14 +66,14 @@
 }
 
 .notebooks-header li .sub-header-title {
-    width: 55%;
+    width: 30%;
     color: white;
 }
 
 
 
 .notebooks-header li .sub-header-by {
-    width: 38%;
+    width: 30%;
     color: white;
 }
 
@@ -80,6 +85,10 @@
 .notebooks-header li .sub-header-actions {
     width: 18%;
     color: white;
+}
+
+.sub-header-notebook-title {
+    width: 30%;
 }
 
 a#link {

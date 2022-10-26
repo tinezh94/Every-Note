@@ -43,7 +43,7 @@ const CreateNotebook = ({hideForm}) => {
         if (createdNotebook) reset();
         setHasSubmitted(false);
         hideForm();
-        // history.push(`/notebooks/notebook/${createdNotebook.id}`);
+        history.push('/notebooks');
     };
 
     const reset = () => {
@@ -52,6 +52,10 @@ const CreateNotebook = ({hideForm}) => {
 
     return (
         <>
+            <h3 className='create-notebook-h3'>
+                Create new notebook
+            </h3>
+            <h5 className='create-notebook-h5'>Notebooks are useful for grouping notes around a common topic.</h5>
             <form onSubmit={onSubmit}>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul>
@@ -66,6 +70,7 @@ const CreateNotebook = ({hideForm}) => {
                 type='text'
                 value={name}
                 onChange={newName}
+                placeholder='Notebook name'
                 />
                 <div className='create-notebook-btn-div'>
                     <button className='create-notebook-btn' type="submit">Create Notebook</button>

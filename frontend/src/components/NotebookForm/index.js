@@ -56,7 +56,7 @@ const NotebookForm = () => {
     let notebook;
     notebook = notebooksSelector && notebooksArr?.map(notebook => (
         <li key={notebook?.id}>
-            <div>
+            <div className='sub-header-notebook-title'>
                 <Link id='link' to={`/notebooks/notebook/${notebook.id}`}>{notebook?.name}</Link>
             </div>
             <div className='sub-header-by'>{sessionUser.username}</div>
