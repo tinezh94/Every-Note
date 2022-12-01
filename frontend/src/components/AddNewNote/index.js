@@ -114,7 +114,6 @@ const AddNewNote = ({ note }) => {
         setHasSubmitted(false);
         setTitle('');
         setContent('');
-        // history.push(`/notebooks/notebook/${id}`);
     }
 
     const editSubmit = async (e) => {
