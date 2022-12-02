@@ -119,7 +119,6 @@ const AddNewNote = ({ note }) => {
     const editSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
-        // if (validationErrors.length > 0) alert('Cannot Edit Note');
 
         const payload = {
             id: note.id,
